@@ -1,4 +1,4 @@
-# Faith Reel Studio
+# AI Studio (Faith Reel Studio)
 
 Remotion-based studio for 2D Bible-story reels (and later: character conversations, verse cards, UGC ads).
 

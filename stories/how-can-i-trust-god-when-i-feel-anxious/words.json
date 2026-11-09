@@ -1,0 +1,1637 @@
+{
+  "model": "offline-pause-align (ffmpeg silencedetect -32dB/0.35s)",
+  "duration": 108.669375,
+  "text": "Have you ever felt anxious about your future, wondering if everything will be okay? You pray, you try to stay strong, but deep inside, your mind is filled with worry. So, how can you trust God when anxiety feels overwhelming? The Bible gives us a powerful answer. In Philippians chapter four, verses six and seven, we are encouraged to bring our worries to God through prayer and thanksgiving. Notice what this means. God is not asking you to pretend that your problems do not exist. He is inviting you to bring those problems to Him. When fear fills your mind, you can speak honestly to God about what you are feeling. Tell Him what worries you. Ask Him for wisdom, strength, and peace. And remember the words of Psalm fifty-six, verse three. When I am afraid, I will trust in You. This does not mean fear will disappear instantly. It means that even when you feel afraid, you can choose to turn toward God instead of facing your fear alone. Jesus also reminds us in Matthew chapter six that we should not be consumed by worry about tomorrow. Tomorrow has its own concerns, but today is the day you are living right now. So, take one step at a time. Pray when your thoughts feel heavy. Read God's Word when you need direction. And reach out to someone you trust when you need support. Faith is not about having every answer. It is about learning to trust God, even when you cannot see the whole picture. You may not know what tomorrow will bring, but you can seek God's guidance today. When anxiety rises, remember this. You do not have to carry every worry alone. Bring your fears to God, take the next step with faith, and give yourself grace along the way. If this message encouraged you, take a moment to reflect on this question. What is one worry you can bring to God today?",
+  "words": [
+    {
+      "word": "Have",
+      "start": 0,
+      "end": 0.108
+    },
+    {
+      "word": "you",
+      "start": 0.108,
+      "end": 0.216
+    },
+    {
+      "word": "ever",
+      "start": 0.216,
+      "end": 0.404
+    },
+    {
+      "word": "felt",
+      "start": 0.404,
+      "end": 0.512
+    },
+    {
+      "word": "anxious",
+      "start": 0.512,
+      "end": 0.699
+    },
+    {
+      "word": "about",
+      "start": 0.699,
+      "end": 0.887
+    },
+    {
+      "word": "your",
+      "start": 0.887,
+      "end": 0.995
+    },
+    {
+      "word": "future",
+      "start": 0.995,
+      "end": 1.183
+    },
+    {
+      "word": "wondering",
+      "start": 1.183,
+      "end": 1.451
+    },
+    {
+      "word": "if",
+      "start": 1.451,
+      "end": 1.559
+    },
+    {
+      "word": "everything",
+      "start": 1.559,
+      "end": 1.906
+    },
+    {
+      "word": "will",
+      "start": 1.906,
+      "end": 2.014
+    },
+    {
+      "word": "be",
+      "start": 2.014,
+      "end": 2.122
+    },
+    {
+      "word": "okay",
+      "start": 2.122,
+      "end": 2.31
+    },
+    {
+      "word": "You",
+      "start": 2.813,
+      "end": 2.918
+    },
+    {
+      "word": "pray",
+      "start": 2.918,
+      "end": 3.022
+    },
+    {
+      "word": "you",
+      "start": 3.022,
+      "end": 3.127
+    },
+    {
+      "word": "try",
+      "start": 3.127,
+      "end": 3.232
+    },
+    {
+      "word": "to",
+      "start": 3.232,
+      "end": 3.336
+    },
+    {
+      "word": "stay",
+      "start": 3.336,
+      "end": 3.441
+    },
+    {
+      "word": "strong",
+      "start": 3.441,
+      "end": 3.545
+    },
+    {
+      "word": "but",
+      "start": 3.545,
+      "end": 3.65
+    },
+    {
+      "word": "deep",
+      "start": 3.65,
+      "end": 3.755
+    },
+    {
+      "word": "inside",
+      "start": 3.755,
+      "end": 3.937
+    },
+    {
+      "word": "your",
+      "start": 3.937,
+      "end": 4.042
+    },
+    {
+      "word": "mind",
+      "start": 4.042,
+      "end": 4.146
+    },
+    {
+      "word": "is",
+      "start": 4.146,
+      "end": 4.251
+    },
+    {
+      "word": "filled",
+      "start": 4.251,
+      "end": 4.433
+    },
+    {
+      "word": "with",
+      "start": 4.433,
+      "end": 4.538
+    },
+    {
+      "word": "worry",
+      "start": 4.538,
+      "end": 4.72
+    },
+    {
+      "word": "So",
+      "start": 5.485,
+      "end": 5.638
+    },
+    {
+      "word": "how",
+      "start": 5.638,
+      "end": 5.791
+    },
+    {
+      "word": "can",
+      "start": 5.791,
+      "end": 5.944
+    },
+    {
+      "word": "you",
+      "start": 5.944,
+      "end": 6.098
+    },
+    {
+      "word": "trust",
+      "start": 6.098,
+      "end": 6.251
+    },
+    {
+      "word": "God",
+      "start": 6.251,
+      "end": 6.404
+    },
+    {
+      "word": "when",
+      "start": 6.404,
+      "end": 6.558
+    },
+    {
+      "word": "anxiety",
+      "start": 6.558,
+      "end": 6.938
+    },
+    {
+      "word": "feels",
+      "start": 6.938,
+      "end": 7.091
+    },
+    {
+      "word": "overwhelming",
+      "start": 7.091,
+      "end": 7.585
+    },
+    {
+      "word": "The",
+      "start": 8.112,
+      "end": 8.398
+    },
+    {
+      "word": "Bible",
+      "start": 8.398,
+      "end": 8.684
+    },
+    {
+      "word": "gives",
+      "start": 8.684,
+      "end": 9.182
+    },
+    {
+      "word": "us",
+      "start": 9.182,
+      "end": 9.468
+    },
+    {
+      "word": "a",
+      "start": 9.468,
+      "end": 9.754
+    },
+    {
+      "word": "powerful",
+      "start": 9.754,
+      "end": 10.464
+    },
+    {
+      "word": "answer",
+      "start": 10.464,
+      "end": 10.962
+    },
+    {
+      "word": "In",
+      "start": 11.651,
+      "end": 11.771
+    },
+    {
+      "word": "Philippians",
+      "start": 11.771,
+      "end": 12.068
+    },
+    {
+      "word": "chapter",
+      "start": 12.068,
+      "end": 12.276
+    },
+    {
+      "word": "four",
+      "start": 12.276,
+      "end": 12.396
+    },
+    {
+      "word": "verses",
+      "start": 12.396,
+      "end": 12.604
+    },
+    {
+      "word": "six",
+      "start": 12.604,
+      "end": 12.724
+    },
+    {
+      "word": "and",
+      "start": 12.724,
+      "end": 12.843
+    },
+    {
+      "word": "seven",
+      "start": 12.843,
+      "end": 13.052
+    },
+    {
+      "word": "we",
+      "start": 13.052,
+      "end": 13.171
+    },
+    {
+      "word": "are",
+      "start": 13.171,
+      "end": 13.291
+    },
+    {
+      "word": "encouraged",
+      "start": 13.291,
+      "end": 13.677
+    },
+    {
+      "word": "to",
+      "start": 13.677,
+      "end": 13.797
+    },
+    {
+      "word": "bring",
+      "start": 13.797,
+      "end": 13.916
+    },
+    {
+      "word": "our",
+      "start": 13.916,
+      "end": 14.036
+    },
+    {
+      "word": "worries",
+      "start": 14.036,
+      "end": 14.244
+    },
+    {
+      "word": "to",
+      "start": 14.244,
+      "end": 14.364
+    },
+    {
+      "word": "God",
+      "start": 14.364,
+      "end": 14.484
+    },
+    {
+      "word": "through",
+      "start": 14.484,
+      "end": 14.603
+    },
+    {
+      "word": "prayer",
+      "start": 14.603,
+      "end": 14.723
+    },
+    {
+      "word": "and",
+      "start": 14.723,
+      "end": 14.843
+    },
+    {
+      "word": "thanksgiving",
+      "start": 14.843,
+      "end": 15.14
+    },
+    {
+      "word": "Notice",
+      "start": 15.842,
+      "end": 16.606
+    },
+    {
+      "word": "what",
+      "start": 16.606,
+      "end": 17.045
+    },
+    {
+      "word": "this",
+      "start": 17.045,
+      "end": 17.485
+    },
+    {
+      "word": "means",
+      "start": 17.485,
+      "end": 17.924
+    },
+    {
+      "word": "God",
+      "start": 18.43,
+      "end": 18.845
+    },
+    {
+      "word": "is",
+      "start": 18.845,
+      "end": 19.26
+    },
+    {
+      "word": "not",
+      "start": 19.26,
+      "end": 19.675
+    },
+    {
+      "word": "asking",
+      "start": 19.675,
+      "end": 20.398
+    },
+    {
+      "word": "you",
+      "start": 20.398,
+      "end": 20.813
+    },
+    {
+      "word": "to",
+      "start": 20.813,
+      "end": 21.228
+    },
+    {
+      "word": "pretend",
+      "start": 21.228,
+      "end": 21.95
+    },
+    {
+      "word": "that",
+      "start": 21.95,
+      "end": 22.365
+    },
+    {
+      "word": "your",
+      "start": 22.365,
+      "end": 22.78
+    },
+    {
+      "word": "problems",
+      "start": 22.78,
+      "end": 23.502
+    },
+    {
+      "word": "do",
+      "start": 23.502,
+      "end": 23.917
+    },
+    {
+      "word": "not",
+      "start": 23.917,
+      "end": 24.332
+    },
+    {
+      "word": "exist",
+      "start": 24.332,
+      "end": 25.054
+    },
+    {
+      "word": "He",
+      "start": 25.62,
+      "end": 26.004
+    },
+    {
+      "word": "is",
+      "start": 26.004,
+      "end": 26.388
+    },
+    {
+      "word": "inviting",
+      "start": 26.388,
+      "end": 27.342
+    },
+    {
+      "word": "you",
+      "start": 27.342,
+      "end": 27.726
+    },
+    {
+      "word": "to",
+      "start": 27.726,
+      "end": 28.111
+    },
+    {
+      "word": "bring",
+      "start": 28.111,
+      "end": 28.495
+    },
+    {
+      "word": "those",
+      "start": 28.495,
+      "end": 28.879
+    },
+    {
+      "word": "problems",
+      "start": 28.879,
+      "end": 29.548
+    },
+    {
+      "word": "to",
+      "start": 29.548,
+      "end": 29.933
+    },
+    {
+      "word": "Him",
+      "start": 29.933,
+      "end": 30.317
+    },
+    {
+      "word": "When",
+      "start": 30.803,
+      "end": 30.953
+    },
+    {
+      "word": "fear",
+      "start": 30.953,
+      "end": 31.102
+    },
+    {
+      "word": "fills",
+      "start": 31.102,
+      "end": 31.252
+    },
+    {
+      "word": "your",
+      "start": 31.252,
+      "end": 31.402
+    },
+    {
+      "word": "mind",
+      "start": 31.402,
+      "end": 31.552
+    },
+    {
+      "word": "you",
+      "start": 31.552,
+      "end": 31.702
+    },
+    {
+      "word": "can",
+      "start": 31.702,
+      "end": 31.852
+    },
+    {
+      "word": "speak",
+      "start": 31.852,
+      "end": 32.002
+    },
+    {
+      "word": "honestly",
+      "start": 32.002,
+      "end": 32.374
+    },
+    {
+      "word": "to",
+      "start": 32.374,
+      "end": 32.524
+    },
+    {
+      "word": "God",
+      "start": 32.524,
+      "end": 32.674
+    },
+    {
+      "word": "about",
+      "start": 32.674,
+      "end": 32.935
+    },
+    {
+      "word": "what",
+      "start": 32.935,
+      "end": 33.085
+    },
+    {
+      "word": "you",
+      "start": 33.085,
+      "end": 33.235
+    },
+    {
+      "word": "are",
+      "start": 33.235,
+      "end": 33.384
+    },
+    {
+      "word": "feeling",
+      "start": 33.384,
+      "end": 33.645
+    },
+    {
+      "word": "Tell",
+      "start": 34.253,
+      "end": 34.953
+    },
+    {
+      "word": "Him",
+      "start": 34.953,
+      "end": 35.652
+    },
+    {
+      "word": "what",
+      "start": 35.652,
+      "end": 36.352
+    },
+    {
+      "word": "worries",
+      "start": 36.352,
+      "end": 37.57
+    },
+    {
+      "word": "you",
+      "start": 37.57,
+      "end": 38.27
+    },
+    {
+      "word": "Ask",
+      "start": 38.838,
+      "end": 38.971
+    },
+    {
+      "word": "Him",
+      "start": 38.971,
+      "end": 39.105
+    },
+    {
+      "word": "for",
+      "start": 39.105,
+      "end": 39.239
+    },
+    {
+      "word": "wisdom",
+      "start": 39.239,
+      "end": 39.471
+    },
+    {
+      "word": "strength",
+      "start": 39.471,
+      "end": 39.605
+    },
+    {
+      "word": "and",
+      "start": 39.605,
+      "end": 39.739
+    },
+    {
+      "word": "peace",
+      "start": 39.739,
+      "end": 39.873
+    },
+    {
+      "word": "And",
+      "start": 40.405,
+      "end": 40.621
+    },
+    {
+      "word": "remember",
+      "start": 40.621,
+      "end": 41.159
+    },
+    {
+      "word": "the",
+      "start": 41.159,
+      "end": 41.376
+    },
+    {
+      "word": "words",
+      "start": 41.376,
+      "end": 41.592
+    },
+    {
+      "word": "of",
+      "start": 41.592,
+      "end": 41.809
+    },
+    {
+      "word": "Psalm",
+      "start": 41.809,
+      "end": 42.026
+    },
+    {
+      "word": "fifty-six",
+      "start": 42.026,
+      "end": 42.564
+    },
+    {
+      "word": "verse",
+      "start": 42.564,
+      "end": 42.78
+    },
+    {
+      "word": "three",
+      "start": 42.78,
+      "end": 42.997
+    },
+    {
+      "word": "When",
+      "start": 43.475,
+      "end": 43.731
+    },
+    {
+      "word": "I",
+      "start": 43.731,
+      "end": 43.986
+    },
+    {
+      "word": "am",
+      "start": 43.986,
+      "end": 44.241
+    },
+    {
+      "word": "afraid",
+      "start": 44.241,
+      "end": 44.686
+    },
+    {
+      "word": "I",
+      "start": 44.686,
+      "end": 44.941
+    },
+    {
+      "word": "will",
+      "start": 44.941,
+      "end": 45.196
+    },
+    {
+      "word": "trust",
+      "start": 45.196,
+      "end": 45.452
+    },
+    {
+      "word": "in",
+      "start": 45.452,
+      "end": 45.707
+    },
+    {
+      "word": "You",
+      "start": 45.707,
+      "end": 45.962
+    },
+    {
+      "word": "This",
+      "start": 46.513,
+      "end": 46.721
+    },
+    {
+      "word": "does",
+      "start": 46.721,
+      "end": 46.929
+    },
+    {
+      "word": "not",
+      "start": 46.929,
+      "end": 47.136
+    },
+    {
+      "word": "mean",
+      "start": 47.136,
+      "end": 47.344
+    },
+    {
+      "word": "fear",
+      "start": 47.344,
+      "end": 47.552
+    },
+    {
+      "word": "will",
+      "start": 47.552,
+      "end": 47.76
+    },
+    {
+      "word": "disappear",
+      "start": 47.76,
+      "end": 48.275
+    },
+    {
+      "word": "instantly",
+      "start": 48.275,
+      "end": 48.791
+    },
+    {
+      "word": "It",
+      "start": 49.392,
+      "end": 49.483
+    },
+    {
+      "word": "means",
+      "start": 49.483,
+      "end": 49.574
+    },
+    {
+      "word": "that",
+      "start": 49.574,
+      "end": 49.666
+    },
+    {
+      "word": "even",
+      "start": 49.666,
+      "end": 49.825
+    },
+    {
+      "word": "when",
+      "start": 49.825,
+      "end": 49.916
+    },
+    {
+      "word": "you",
+      "start": 49.916,
+      "end": 50.008
+    },
+    {
+      "word": "feel",
+      "start": 50.008,
+      "end": 50.099
+    },
+    {
+      "word": "afraid",
+      "start": 50.099,
+      "end": 50.258
+    },
+    {
+      "word": "you",
+      "start": 50.258,
+      "end": 50.35
+    },
+    {
+      "word": "can",
+      "start": 50.35,
+      "end": 50.441
+    },
+    {
+      "word": "choose",
+      "start": 50.441,
+      "end": 50.532
+    },
+    {
+      "word": "to",
+      "start": 50.532,
+      "end": 50.624
+    },
+    {
+      "word": "turn",
+      "start": 50.624,
+      "end": 50.715
+    },
+    {
+      "word": "toward",
+      "start": 50.715,
+      "end": 50.874
+    },
+    {
+      "word": "God",
+      "start": 50.874,
+      "end": 50.966
+    },
+    {
+      "word": "instead",
+      "start": 50.966,
+      "end": 51.125
+    },
+    {
+      "word": "of",
+      "start": 51.125,
+      "end": 51.216
+    },
+    {
+      "word": "facing",
+      "start": 51.216,
+      "end": 51.375
+    },
+    {
+      "word": "your",
+      "start": 51.375,
+      "end": 51.467
+    },
+    {
+      "word": "fear",
+      "start": 51.467,
+      "end": 51.558
+    },
+    {
+      "word": "alone",
+      "start": 51.558,
+      "end": 51.717
+    },
+    {
+      "word": "Jesus",
+      "start": 52.202,
+      "end": 52.602
+    },
+    {
+      "word": "also",
+      "start": 52.602,
+      "end": 53.001
+    },
+    {
+      "word": "reminds",
+      "start": 53.001,
+      "end": 53.4
+    },
+    {
+      "word": "us",
+      "start": 53.4,
+      "end": 53.629
+    },
+    {
+      "word": "in",
+      "start": 53.629,
+      "end": 53.859
+    },
+    {
+      "word": "Matthew",
+      "start": 53.859,
+      "end": 54.258
+    },
+    {
+      "word": "chapter",
+      "start": 54.258,
+      "end": 54.657
+    },
+    {
+      "word": "six",
+      "start": 54.657,
+      "end": 54.887
+    },
+    {
+      "word": "that",
+      "start": 54.887,
+      "end": 55.116
+    },
+    {
+      "word": "we",
+      "start": 55.116,
+      "end": 55.345
+    },
+    {
+      "word": "should",
+      "start": 55.345,
+      "end": 55.575
+    },
+    {
+      "word": "not",
+      "start": 55.575,
+      "end": 55.804
+    },
+    {
+      "word": "be",
+      "start": 55.804,
+      "end": 56.033
+    },
+    {
+      "word": "consumed",
+      "start": 56.033,
+      "end": 56.602
+    },
+    {
+      "word": "by",
+      "start": 56.602,
+      "end": 56.832
+    },
+    {
+      "word": "worry",
+      "start": 56.832,
+      "end": 57.231
+    },
+    {
+      "word": "about",
+      "start": 57.231,
+      "end": 57.63
+    },
+    {
+      "word": "tomorrow",
+      "start": 57.63,
+      "end": 58.199
+    },
+    {
+      "word": "Tomorrow",
+      "start": 58.755,
+      "end": 59.457
+    },
+    {
+      "word": "has",
+      "start": 59.457,
+      "end": 59.74
+    },
+    {
+      "word": "its",
+      "start": 59.74,
+      "end": 60.024
+    },
+    {
+      "word": "own",
+      "start": 60.024,
+      "end": 60.307
+    },
+    {
+      "word": "concerns",
+      "start": 60.307,
+      "end": 60.8
+    },
+    {
+      "word": "but",
+      "start": 60.8,
+      "end": 61.083
+    },
+    {
+      "word": "today",
+      "start": 61.083,
+      "end": 61.576
+    },
+    {
+      "word": "is",
+      "start": 61.576,
+      "end": 61.859
+    },
+    {
+      "word": "the",
+      "start": 61.859,
+      "end": 62.142
+    },
+    {
+      "word": "day",
+      "start": 62.142,
+      "end": 62.425
+    },
+    {
+      "word": "you",
+      "start": 62.425,
+      "end": 62.708
+    },
+    {
+      "word": "are",
+      "start": 62.708,
+      "end": 62.992
+    },
+    {
+      "word": "living",
+      "start": 62.992,
+      "end": 63.484
+    },
+    {
+      "word": "right",
+      "start": 63.484,
+      "end": 63.768
+    },
+    {
+      "word": "now",
+      "start": 63.768,
+      "end": 64.051
+    },
+    {
+      "word": "So",
+      "start": 64.558,
+      "end": 65.204
+    },
+    {
+      "word": "take",
+      "start": 65.204,
+      "end": 65.851
+    },
+    {
+      "word": "one",
+      "start": 65.851,
+      "end": 66.497
+    },
+    {
+      "word": "step",
+      "start": 66.497,
+      "end": 67.144
+    },
+    {
+      "word": "at",
+      "start": 67.144,
+      "end": 67.79
+    },
+    {
+      "word": "a",
+      "start": 67.79,
+      "end": 68.437
+    },
+    {
+      "word": "time",
+      "start": 68.437,
+      "end": 69.083
+    },
+    {
+      "word": "Pray",
+      "start": 69.611,
+      "end": 69.866
+    },
+    {
+      "word": "when",
+      "start": 69.866,
+      "end": 70.121
+    },
+    {
+      "word": "your",
+      "start": 70.121,
+      "end": 70.376
+    },
+    {
+      "word": "thoughts",
+      "start": 70.376,
+      "end": 70.631
+    },
+    {
+      "word": "feel",
+      "start": 70.631,
+      "end": 70.886
+    },
+    {
+      "word": "heavy",
+      "start": 70.886,
+      "end": 71.33
+    },
+    {
+      "word": "Read",
+      "start": 71.914,
+      "end": 72.081
+    },
+    {
+      "word": "God's",
+      "start": 72.081,
+      "end": 72.248
+    },
+    {
+      "word": "Word",
+      "start": 72.248,
+      "end": 72.415
+    },
+    {
+      "word": "when",
+      "start": 72.415,
+      "end": 72.582
+    },
+    {
+      "word": "you",
+      "start": 72.582,
+      "end": 72.75
+    },
+    {
+      "word": "need",
+      "start": 72.75,
+      "end": 72.917
+    },
+    {
+      "word": "direction",
+      "start": 72.917,
+      "end": 73.332
+    },
+    {
+      "word": "And",
+      "start": 73.801,
+      "end": 73.957
+    },
+    {
+      "word": "reach",
+      "start": 73.957,
+      "end": 74.112
+    },
+    {
+      "word": "out",
+      "start": 74.112,
+      "end": 74.267
+    },
+    {
+      "word": "to",
+      "start": 74.267,
+      "end": 74.422
+    },
+    {
+      "word": "someone",
+      "start": 74.422,
+      "end": 74.693
+    },
+    {
+      "word": "you",
+      "start": 74.693,
+      "end": 74.848
+    },
+    {
+      "word": "trust",
+      "start": 74.848,
+      "end": 75.003
+    },
+    {
+      "word": "when",
+      "start": 75.003,
+      "end": 75.159
+    },
+    {
+      "word": "you",
+      "start": 75.159,
+      "end": 75.314
+    },
+    {
+      "word": "need",
+      "start": 75.314,
+      "end": 75.469
+    },
+    {
+      "word": "support",
+      "start": 75.469,
+      "end": 75.74
+    },
+    {
+      "word": "Faith",
+      "start": 76.206,
+      "end": 76.44
+    },
+    {
+      "word": "is",
+      "start": 76.44,
+      "end": 76.673
+    },
+    {
+      "word": "not",
+      "start": 76.673,
+      "end": 76.907
+    },
+    {
+      "word": "about",
+      "start": 76.907,
+      "end": 77.314
+    },
+    {
+      "word": "having",
+      "start": 77.314,
+      "end": 77.721
+    },
+    {
+      "word": "every",
+      "start": 77.721,
+      "end": 78.301
+    },
+    {
+      "word": "answer",
+      "start": 78.301,
+      "end": 78.707
+    },
+    {
+      "word": "It",
+      "start": 79.298,
+      "end": 79.641
+    },
+    {
+      "word": "is",
+      "start": 79.641,
+      "end": 79.985
+    },
+    {
+      "word": "about",
+      "start": 79.985,
+      "end": 80.582
+    },
+    {
+      "word": "learning",
+      "start": 80.582,
+      "end": 81.179
+    },
+    {
+      "word": "to",
+      "start": 81.179,
+      "end": 81.522
+    },
+    {
+      "word": "trust",
+      "start": 81.522,
+      "end": 81.866
+    },
+    {
+      "word": "God",
+      "start": 81.866,
+      "end": 82.209
+    },
+    {
+      "word": "even",
+      "start": 82.209,
+      "end": 82.806
+    },
+    {
+      "word": "when",
+      "start": 82.806,
+      "end": 83.149
+    },
+    {
+      "word": "you",
+      "start": 83.149,
+      "end": 83.492
+    },
+    {
+      "word": "cannot",
+      "start": 83.492,
+      "end": 84.09
+    },
+    {
+      "word": "see",
+      "start": 84.09,
+      "end": 84.433
+    },
+    {
+      "word": "the",
+      "start": 84.433,
+      "end": 84.776
+    },
+    {
+      "word": "whole",
+      "start": 84.776,
+      "end": 85.119
+    },
+    {
+      "word": "picture",
+      "start": 85.119,
+      "end": 85.717
+    },
+    {
+      "word": "You",
+      "start": 86.278,
+      "end": 86.37
+    },
+    {
+      "word": "may",
+      "start": 86.37,
+      "end": 86.462
+    },
+    {
+      "word": "not",
+      "start": 86.462,
+      "end": 86.553
+    },
+    {
+      "word": "know",
+      "start": 86.553,
+      "end": 86.645
+    },
+    {
+      "word": "what",
+      "start": 86.645,
+      "end": 86.737
+    },
+    {
+      "word": "tomorrow",
+      "start": 86.737,
+      "end": 86.964
+    },
+    {
+      "word": "will",
+      "start": 86.964,
+      "end": 87.056
+    },
+    {
+      "word": "bring",
+      "start": 87.056,
+      "end": 87.148
+    },
+    {
+      "word": "but",
+      "start": 87.148,
+      "end": 87.24
+    },
+    {
+      "word": "you",
+      "start": 87.24,
+      "end": 87.331
+    },
+    {
+      "word": "can",
+      "start": 87.331,
+      "end": 87.423
+    },
+    {
+      "word": "seek",
+      "start": 87.423,
+      "end": 87.515
+    },
+    {
+      "word": "God's",
+      "start": 87.515,
+      "end": 87.607
+    },
+    {
+      "word": "guidance",
+      "start": 87.607,
+      "end": 87.766
+    },
+    {
+      "word": "today",
+      "start": 87.766,
+      "end": 87.926
+    },
+    {
+      "word": "When",
+      "start": 88.429,
+      "end": 88.65
+    },
+    {
+      "word": "anxiety",
+      "start": 88.65,
+      "end": 89.197
+    },
+    {
+      "word": "rises",
+      "start": 89.197,
+      "end": 89.582
+    },
+    {
+      "word": "remember",
+      "start": 89.582,
+      "end": 90.129
+    },
+    {
+      "word": "this",
+      "start": 90.129,
+      "end": 90.35
+    },
+    {
+      "word": "You",
+      "start": 90.929,
+      "end": 91.305
+    },
+    {
+      "word": "do",
+      "start": 91.305,
+      "end": 91.681
+    },
+    {
+      "word": "not",
+      "start": 91.681,
+      "end": 92.057
+    },
+    {
+      "word": "have",
+      "start": 92.057,
+      "end": 92.433
+    },
+    {
+      "word": "to",
+      "start": 92.433,
+      "end": 92.809
+    },
+    {
+      "word": "carry",
+      "start": 92.809,
+      "end": 93.463
+    },
+    {
+      "word": "every",
+      "start": 93.463,
+      "end": 94.396
+    },
+    {
+      "word": "worry",
+      "start": 94.396,
+      "end": 95.05
+    },
+    {
+      "word": "alone",
+      "start": 95.05,
+      "end": 95.704
+    },
+    {
+      "word": "Bring",
+      "start": 96.229,
+      "end": 96.491
+    },
+    {
+      "word": "your",
+      "start": 96.491,
+      "end": 96.752
+    },
+    {
+      "word": "fears",
+      "start": 96.752,
+      "end": 97.014
+    },
+    {
+      "word": "to",
+      "start": 97.014,
+      "end": 97.276
+    },
+    {
+      "word": "God",
+      "start": 97.276,
+      "end": 97.537
+    },
+    {
+      "word": "take",
+      "start": 97.537,
+      "end": 97.799
+    },
+    {
+      "word": "the",
+      "start": 97.799,
+      "end": 98.061
+    },
+    {
+      "word": "next",
+      "start": 98.061,
+      "end": 98.322
+    },
+    {
+      "word": "step",
+      "start": 98.322,
+      "end": 98.584
+    },
+    {
+      "word": "with",
+      "start": 98.584,
+      "end": 98.846
+    },
+    {
+      "word": "faith",
+      "start": 98.846,
+      "end": 99.107
+    },
+    {
+      "word": "and",
+      "start": 99.107,
+      "end": 99.369
+    },
+    {
+      "word": "give",
+      "start": 99.369,
+      "end": 99.631
+    },
+    {
+      "word": "yourself",
+      "start": 99.631,
+      "end": 100.086
+    },
+    {
+      "word": "grace",
+      "start": 100.086,
+      "end": 100.348
+    },
+    {
+      "word": "along",
+      "start": 100.348,
+      "end": 100.804
+    },
+    {
+      "word": "the",
+      "start": 100.804,
+      "end": 101.065
+    },
+    {
+      "word": "way",
+      "start": 101.065,
+      "end": 101.327
+    },
+    {
+      "word": "If",
+      "start": 101.852,
+      "end": 102.047
+    },
+    {
+      "word": "this",
+      "start": 102.047,
+      "end": 102.243
+    },
+    {
+      "word": "message",
+      "start": 102.243,
+      "end": 102.583
+    },
+    {
+      "word": "encouraged",
+      "start": 102.583,
+      "end": 103.213
+    },
+    {
+      "word": "you",
+      "start": 103.213,
+      "end": 103.409
+    },
+    {
+      "word": "take",
+      "start": 103.409,
+      "end": 103.604
+    },
+    {
+      "word": "a",
+      "start": 103.604,
+      "end": 103.8
+    },
+    {
+      "word": "moment",
+      "start": 103.8,
+      "end": 104.14
+    },
+    {
+      "word": "to",
+      "start": 104.14,
+      "end": 104.335
+    },
+    {
+      "word": "reflect",
+      "start": 104.335,
+      "end": 104.676
+    },
+    {
+      "word": "on",
+      "start": 104.676,
+      "end": 104.871
+    },
+    {
+      "word": "this",
+      "start": 104.871,
+      "end": 105.067
+    },
+    {
+      "word": "question",
+      "start": 105.067,
+      "end": 105.407
+    },
+    {
+      "word": "What",
+      "start": 106.005,
+      "end": 106.203
+    },
+    {
+      "word": "is",
+      "start": 106.203,
+      "end": 106.402
+    },
+    {
+      "word": "one",
+      "start": 106.402,
+      "end": 106.6
+    },
+    {
+      "word": "worry",
+      "start": 106.6,
+      "end": 106.946
+    },
+    {
+      "word": "you",
+      "start": 106.946,
+      "end": 107.144
+    },
+    {
+      "word": "can",
+      "start": 107.144,
+      "end": 107.342
+    },
+    {
+      "word": "bring",
+      "start": 107.342,
+      "end": 107.541
+    },
+    {
+      "word": "to",
+      "start": 107.541,
+      "end": 107.739
+    },
+    {
+      "word": "God",
+      "start": 107.739,
+      "end": 107.938
+    },
+    {
+      "word": "today",
+      "start": 107.938,
+      "end": 108.283
+    }
+  ]
+}

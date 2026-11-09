@@ -1,0 +1,2697 @@
+{
+  "model": "offline-pause-align (ffmpeg silencedetect -32dB/0.35s)",
+  "duration": 230.664,
+  "text": "Why Did Jesus Have to Die on the Cross? Have you ever wondered why Jesus had to die on a cross? Why did the Son of God allow Himself to be crucified? And what does His death really mean for humanity? To understand the cross, we must first understand the problem Jesus came to solve. According to the Bible, sin separated humanity from God. In Isaiah chapter fifty-three, verses four through six, the prophet describes someone who would suffer for the sins of others. The passage says that He was wounded for our transgressions and bruised for our iniquities. This prophecy points to the suffering servant, whom Christians understand to be Jesus Christ. But why would Jesus take this suffering upon Himself? The answer begins with God's love. John chapter three, verse sixteen, tells us that God loved the world so much that He gave His only Son. Jesus came into the world not to condemn humanity, but to offer the way to salvation. Romans chapter five, verse eight, explains that God demonstrated His love for us through the death of Christ, even while we were still sinners. Jesus knew what was waiting for Him. Yet He willingly continued toward Jerusalem. He knew that His mission would lead to the cross. In the Gospel of Matthew, chapter twenty-seven, we read about the events surrounding His crucifixion. Jesus was mocked, beaten, and led to a place called Golgotha. There, He was nailed to a cross between two criminals. As He suffered, Jesus spoke words that revealed the depth of His mercy. In Luke chapter twenty-three, verse thirty-four, He prayed, Father, forgive them, for they know not what they do. Even in His suffering, Jesus showed compassion toward those who were hurting Him. Then darkness covered the land. And according to Matthew chapter twenty-seven, when Jesus died, the curtain of the temple was torn in two. This moment carried deep spiritual meaning. The torn curtain symbolized a new way of access to God through Jesus. In John chapter nineteen, verse thirty, Jesus spoke His final words. It is finished. His earthly mission had reached its completion. But the story did not end at the cross. Jesus was buried in a tomb. And on the third day, He rose again. First Corinthians chapter fifteen, verses three and four, describes the central message of the Christian faith. Christ died for our sins, was buried, and was raised on the third day. The cross represents sacrifice. It represents forgiveness. And above all, it reveals the depth of God's love for humanity. Jesus did not go to the cross because He had no choice. He gave His life so that humanity could be reconciled with God. And His resurrection gives Christians the hope of new life. So, why did Jesus have to die on the cross? According to the Christian faith, He died to bear the burden of sin, demonstrate God's love, and open the way to salvation. The cross reminds us that even in humanity's darkest moment, God's love was reaching out to the world. And the empty tomb reminds us that death does not have the final word. That is the meaning of Jesus' sacrifice. That is the hope of the resurrection.",
+  "words": [
+    {
+      "word": "Why",
+      "start": 0,
+      "end": 0.276
+    },
+    {
+      "word": "Did",
+      "start": 0.276,
+      "end": 0.553
+    },
+    {
+      "word": "Jesus",
+      "start": 0.553,
+      "end": 1.033
+    },
+    {
+      "word": "Have",
+      "start": 1.033,
+      "end": 1.31
+    },
+    {
+      "word": "to",
+      "start": 1.31,
+      "end": 1.586
+    },
+    {
+      "word": "Die",
+      "start": 1.586,
+      "end": 1.862
+    },
+    {
+      "word": "on",
+      "start": 1.862,
+      "end": 2.139
+    },
+    {
+      "word": "the",
+      "start": 2.139,
+      "end": 2.415
+    },
+    {
+      "word": "Cross",
+      "start": 2.415,
+      "end": 2.691
+    },
+    {
+      "word": "Have",
+      "start": 3.311,
+      "end": 3.529
+    },
+    {
+      "word": "you",
+      "start": 3.529,
+      "end": 3.747
+    },
+    {
+      "word": "ever",
+      "start": 3.747,
+      "end": 4.126
+    },
+    {
+      "word": "wondered",
+      "start": 4.126,
+      "end": 4.667
+    },
+    {
+      "word": "why",
+      "start": 4.667,
+      "end": 4.885
+    },
+    {
+      "word": "Jesus",
+      "start": 4.885,
+      "end": 5.264
+    },
+    {
+      "word": "had",
+      "start": 5.264,
+      "end": 5.482
+    },
+    {
+      "word": "to",
+      "start": 5.482,
+      "end": 5.7
+    },
+    {
+      "word": "die",
+      "start": 5.7,
+      "end": 5.918
+    },
+    {
+      "word": "on",
+      "start": 5.918,
+      "end": 6.136
+    },
+    {
+      "word": "a",
+      "start": 6.136,
+      "end": 6.354
+    },
+    {
+      "word": "cross",
+      "start": 6.354,
+      "end": 6.572
+    },
+    {
+      "word": "Why",
+      "start": 7.235,
+      "end": 7.485
+    },
+    {
+      "word": "did",
+      "start": 7.485,
+      "end": 7.734
+    },
+    {
+      "word": "the",
+      "start": 7.734,
+      "end": 7.984
+    },
+    {
+      "word": "Son",
+      "start": 7.984,
+      "end": 8.233
+    },
+    {
+      "word": "of",
+      "start": 8.233,
+      "end": 8.483
+    },
+    {
+      "word": "God",
+      "start": 8.483,
+      "end": 8.732
+    },
+    {
+      "word": "allow",
+      "start": 8.732,
+      "end": 9.166
+    },
+    {
+      "word": "Himself",
+      "start": 9.166,
+      "end": 9.6
+    },
+    {
+      "word": "to",
+      "start": 9.6,
+      "end": 9.85
+    },
+    {
+      "word": "be",
+      "start": 9.85,
+      "end": 10.099
+    },
+    {
+      "word": "crucified",
+      "start": 10.099,
+      "end": 10.718
+    },
+    {
+      "word": "And",
+      "start": 11.373,
+      "end": 11.603
+    },
+    {
+      "word": "what",
+      "start": 11.603,
+      "end": 11.834
+    },
+    {
+      "word": "does",
+      "start": 11.834,
+      "end": 12.065
+    },
+    {
+      "word": "His",
+      "start": 12.065,
+      "end": 12.295
+    },
+    {
+      "word": "death",
+      "start": 12.295,
+      "end": 12.526
+    },
+    {
+      "word": "really",
+      "start": 12.526,
+      "end": 12.928
+    },
+    {
+      "word": "mean",
+      "start": 12.928,
+      "end": 13.158
+    },
+    {
+      "word": "for",
+      "start": 13.158,
+      "end": 13.389
+    },
+    {
+      "word": "humanity",
+      "start": 13.389,
+      "end": 14.132
+    },
+    {
+      "word": "To",
+      "start": 14.756,
+      "end": 15.038
+    },
+    {
+      "word": "understand",
+      "start": 15.038,
+      "end": 15.736
+    },
+    {
+      "word": "the",
+      "start": 15.736,
+      "end": 16.018
+    },
+    {
+      "word": "cross",
+      "start": 16.018,
+      "end": 16.299
+    },
+    {
+      "word": "we",
+      "start": 16.299,
+      "end": 16.58
+    },
+    {
+      "word": "must",
+      "start": 16.58,
+      "end": 16.862
+    },
+    {
+      "word": "first",
+      "start": 16.862,
+      "end": 17.143
+    },
+    {
+      "word": "understand",
+      "start": 17.143,
+      "end": 17.842
+    },
+    {
+      "word": "the",
+      "start": 17.842,
+      "end": 18.123
+    },
+    {
+      "word": "problem",
+      "start": 18.123,
+      "end": 18.613
+    },
+    {
+      "word": "Jesus",
+      "start": 18.613,
+      "end": 19.103
+    },
+    {
+      "word": "came",
+      "start": 19.103,
+      "end": 19.384
+    },
+    {
+      "word": "to",
+      "start": 19.384,
+      "end": 19.666
+    },
+    {
+      "word": "solve",
+      "start": 19.666,
+      "end": 19.947
+    },
+    {
+      "word": "According",
+      "start": 20.726,
+      "end": 21.384
+    },
+    {
+      "word": "to",
+      "start": 21.384,
+      "end": 21.649
+    },
+    {
+      "word": "the",
+      "start": 21.649,
+      "end": 21.914
+    },
+    {
+      "word": "Bible",
+      "start": 21.914,
+      "end": 22.179
+    },
+    {
+      "word": "sin",
+      "start": 22.179,
+      "end": 22.443
+    },
+    {
+      "word": "separated",
+      "start": 22.443,
+      "end": 23.297
+    },
+    {
+      "word": "humanity",
+      "start": 23.297,
+      "end": 24.151
+    },
+    {
+      "word": "from",
+      "start": 24.151,
+      "end": 24.416
+    },
+    {
+      "word": "God",
+      "start": 24.416,
+      "end": 24.681
+    },
+    {
+      "word": "In",
+      "start": 25.301,
+      "end": 25.833
+    },
+    {
+      "word": "Isaiah",
+      "start": 25.833,
+      "end": 26.759
+    },
+    {
+      "word": "chapter",
+      "start": 26.759,
+      "end": 27.685
+    },
+    {
+      "word": "fifty-three",
+      "start": 27.685,
+      "end": 29.005
+    },
+    {
+      "word": "verses",
+      "start": 29.005,
+      "end": 29.931
+    },
+    {
+      "word": "four",
+      "start": 29.931,
+      "end": 30.463
+    },
+    {
+      "word": "through",
+      "start": 30.463,
+      "end": 30.994
+    },
+    {
+      "word": "six",
+      "start": 30.994,
+      "end": 31.526
+    },
+    {
+      "word": "the",
+      "start": 31.526,
+      "end": 32.058
+    },
+    {
+      "word": "prophet",
+      "start": 32.058,
+      "end": 32.984
+    },
+    {
+      "word": "describes",
+      "start": 32.984,
+      "end": 34.304
+    },
+    {
+      "word": "someone",
+      "start": 34.304,
+      "end": 35.23
+    },
+    {
+      "word": "who",
+      "start": 35.23,
+      "end": 35.762
+    },
+    {
+      "word": "would",
+      "start": 35.762,
+      "end": 36.294
+    },
+    {
+      "word": "suffer",
+      "start": 36.294,
+      "end": 37.22
+    },
+    {
+      "word": "for",
+      "start": 37.22,
+      "end": 37.752
+    },
+    {
+      "word": "the",
+      "start": 37.752,
+      "end": 38.284
+    },
+    {
+      "word": "sins",
+      "start": 38.284,
+      "end": 38.816
+    },
+    {
+      "word": "of",
+      "start": 38.816,
+      "end": 39.347
+    },
+    {
+      "word": "others",
+      "start": 39.347,
+      "end": 40.273
+    },
+    {
+      "word": "The",
+      "start": 41.09,
+      "end": 41.354
+    },
+    {
+      "word": "passage",
+      "start": 41.354,
+      "end": 41.815
+    },
+    {
+      "word": "says",
+      "start": 41.815,
+      "end": 42.079
+    },
+    {
+      "word": "that",
+      "start": 42.079,
+      "end": 42.344
+    },
+    {
+      "word": "He",
+      "start": 42.344,
+      "end": 42.608
+    },
+    {
+      "word": "was",
+      "start": 42.608,
+      "end": 42.873
+    },
+    {
+      "word": "wounded",
+      "start": 42.873,
+      "end": 43.334
+    },
+    {
+      "word": "for",
+      "start": 43.334,
+      "end": 43.598
+    },
+    {
+      "word": "our",
+      "start": 43.598,
+      "end": 43.863
+    },
+    {
+      "word": "transgressions",
+      "start": 43.863,
+      "end": 44.519
+    },
+    {
+      "word": "and",
+      "start": 44.519,
+      "end": 44.784
+    },
+    {
+      "word": "bruised",
+      "start": 44.784,
+      "end": 45.244
+    },
+    {
+      "word": "for",
+      "start": 45.244,
+      "end": 45.509
+    },
+    {
+      "word": "our",
+      "start": 45.509,
+      "end": 45.774
+    },
+    {
+      "word": "iniquities",
+      "start": 45.774,
+      "end": 46.626
+    },
+    {
+      "word": "This",
+      "start": 47.208,
+      "end": 47.351
+    },
+    {
+      "word": "prophecy",
+      "start": 47.351,
+      "end": 47.705
+    },
+    {
+      "word": "points",
+      "start": 47.705,
+      "end": 47.848
+    },
+    {
+      "word": "to",
+      "start": 47.848,
+      "end": 47.99
+    },
+    {
+      "word": "the",
+      "start": 47.99,
+      "end": 48.133
+    },
+    {
+      "word": "suffering",
+      "start": 48.133,
+      "end": 48.487
+    },
+    {
+      "word": "servant",
+      "start": 48.487,
+      "end": 48.735
+    },
+    {
+      "word": "whom",
+      "start": 48.735,
+      "end": 48.878
+    },
+    {
+      "word": "Christians",
+      "start": 48.878,
+      "end": 49.127
+    },
+    {
+      "word": "understand",
+      "start": 49.127,
+      "end": 49.481
+    },
+    {
+      "word": "to",
+      "start": 49.481,
+      "end": 49.623
+    },
+    {
+      "word": "be",
+      "start": 49.623,
+      "end": 49.766
+    },
+    {
+      "word": "Jesus",
+      "start": 49.766,
+      "end": 50.014
+    },
+    {
+      "word": "Christ",
+      "start": 50.014,
+      "end": 50.157
+    },
+    {
+      "word": "But",
+      "start": 51.001,
+      "end": 51.143
+    },
+    {
+      "word": "why",
+      "start": 51.143,
+      "end": 51.285
+    },
+    {
+      "word": "would",
+      "start": 51.285,
+      "end": 51.427
+    },
+    {
+      "word": "Jesus",
+      "start": 51.427,
+      "end": 51.675
+    },
+    {
+      "word": "take",
+      "start": 51.675,
+      "end": 51.817
+    },
+    {
+      "word": "this",
+      "start": 51.817,
+      "end": 51.959
+    },
+    {
+      "word": "suffering",
+      "start": 51.959,
+      "end": 52.312
+    },
+    {
+      "word": "upon",
+      "start": 52.312,
+      "end": 52.56
+    },
+    {
+      "word": "Himself",
+      "start": 52.56,
+      "end": 52.807
+    },
+    {
+      "word": "The",
+      "start": 53.536,
+      "end": 54.47
+    },
+    {
+      "word": "answer",
+      "start": 54.47,
+      "end": 56.095
+    },
+    {
+      "word": "begins",
+      "start": 56.095,
+      "end": 57.72
+    },
+    {
+      "word": "with",
+      "start": 57.72,
+      "end": 58.654
+    },
+    {
+      "word": "God's",
+      "start": 58.654,
+      "end": 59.588
+    },
+    {
+      "word": "love",
+      "start": 59.588,
+      "end": 60.521
+    },
+    {
+      "word": "John",
+      "start": 61.318,
+      "end": 61.706
+    },
+    {
+      "word": "chapter",
+      "start": 61.706,
+      "end": 62.381
+    },
+    {
+      "word": "three",
+      "start": 62.381,
+      "end": 62.769
+    },
+    {
+      "word": "verse",
+      "start": 62.769,
+      "end": 63.156
+    },
+    {
+      "word": "sixteen",
+      "start": 63.156,
+      "end": 63.831
+    },
+    {
+      "word": "tells",
+      "start": 63.831,
+      "end": 64.219
+    },
+    {
+      "word": "us",
+      "start": 64.219,
+      "end": 64.607
+    },
+    {
+      "word": "that",
+      "start": 64.607,
+      "end": 64.994
+    },
+    {
+      "word": "God",
+      "start": 64.994,
+      "end": 65.382
+    },
+    {
+      "word": "loved",
+      "start": 65.382,
+      "end": 66.057
+    },
+    {
+      "word": "the",
+      "start": 66.057,
+      "end": 66.445
+    },
+    {
+      "word": "world",
+      "start": 66.445,
+      "end": 66.833
+    },
+    {
+      "word": "so",
+      "start": 66.833,
+      "end": 67.22
+    },
+    {
+      "word": "much",
+      "start": 67.22,
+      "end": 67.608
+    },
+    {
+      "word": "that",
+      "start": 67.608,
+      "end": 67.996
+    },
+    {
+      "word": "He",
+      "start": 67.996,
+      "end": 68.384
+    },
+    {
+      "word": "gave",
+      "start": 68.384,
+      "end": 68.771
+    },
+    {
+      "word": "His",
+      "start": 68.771,
+      "end": 69.159
+    },
+    {
+      "word": "only",
+      "start": 69.159,
+      "end": 69.834
+    },
+    {
+      "word": "Son",
+      "start": 69.834,
+      "end": 70.222
+    },
+    {
+      "word": "Jesus",
+      "start": 70.901,
+      "end": 71.479
+    },
+    {
+      "word": "came",
+      "start": 71.479,
+      "end": 71.811
+    },
+    {
+      "word": "into",
+      "start": 71.811,
+      "end": 72.39
+    },
+    {
+      "word": "the",
+      "start": 72.39,
+      "end": 72.722
+    },
+    {
+      "word": "world",
+      "start": 72.722,
+      "end": 73.054
+    },
+    {
+      "word": "not",
+      "start": 73.054,
+      "end": 73.386
+    },
+    {
+      "word": "to",
+      "start": 73.386,
+      "end": 73.719
+    },
+    {
+      "word": "condemn",
+      "start": 73.719,
+      "end": 74.297
+    },
+    {
+      "word": "humanity",
+      "start": 74.297,
+      "end": 75.367
+    },
+    {
+      "word": "but",
+      "start": 75.367,
+      "end": 75.7
+    },
+    {
+      "word": "to",
+      "start": 75.7,
+      "end": 76.032
+    },
+    {
+      "word": "offer",
+      "start": 76.032,
+      "end": 76.61
+    },
+    {
+      "word": "the",
+      "start": 76.61,
+      "end": 76.943
+    },
+    {
+      "word": "way",
+      "start": 76.943,
+      "end": 77.275
+    },
+    {
+      "word": "to",
+      "start": 77.275,
+      "end": 77.607
+    },
+    {
+      "word": "salvation",
+      "start": 77.607,
+      "end": 78.431
+    },
+    {
+      "word": "Romans",
+      "start": 79.291,
+      "end": 79.419
+    },
+    {
+      "word": "chapter",
+      "start": 79.419,
+      "end": 79.547
+    },
+    {
+      "word": "five",
+      "start": 79.547,
+      "end": 79.62
+    },
+    {
+      "word": "verse",
+      "start": 79.62,
+      "end": 79.694
+    },
+    {
+      "word": "eight",
+      "start": 79.694,
+      "end": 79.767
+    },
+    {
+      "word": "explains",
+      "start": 79.767,
+      "end": 79.895
+    },
+    {
+      "word": "that",
+      "start": 79.895,
+      "end": 79.969
+    },
+    {
+      "word": "God",
+      "start": 79.969,
+      "end": 80.043
+    },
+    {
+      "word": "demonstrated",
+      "start": 80.043,
+      "end": 80.279
+    },
+    {
+      "word": "His",
+      "start": 80.279,
+      "end": 80.353
+    },
+    {
+      "word": "love",
+      "start": 80.353,
+      "end": 80.427
+    },
+    {
+      "word": "for",
+      "start": 80.427,
+      "end": 80.5
+    },
+    {
+      "word": "us",
+      "start": 80.5,
+      "end": 80.574
+    },
+    {
+      "word": "through",
+      "start": 80.574,
+      "end": 80.647
+    },
+    {
+      "word": "the",
+      "start": 80.647,
+      "end": 80.721
+    },
+    {
+      "word": "death",
+      "start": 80.721,
+      "end": 80.794
+    },
+    {
+      "word": "of",
+      "start": 80.794,
+      "end": 80.868
+    },
+    {
+      "word": "Christ",
+      "start": 80.868,
+      "end": 80.941
+    },
+    {
+      "word": "even",
+      "start": 80.941,
+      "end": 81.069
+    },
+    {
+      "word": "while",
+      "start": 81.069,
+      "end": 81.143
+    },
+    {
+      "word": "we",
+      "start": 81.143,
+      "end": 81.216
+    },
+    {
+      "word": "were",
+      "start": 81.216,
+      "end": 81.29
+    },
+    {
+      "word": "still",
+      "start": 81.29,
+      "end": 81.363
+    },
+    {
+      "word": "sinners",
+      "start": 81.363,
+      "end": 81.491
+    },
+    {
+      "word": "Jesus",
+      "start": 82.28,
+      "end": 82.846
+    },
+    {
+      "word": "knew",
+      "start": 82.846,
+      "end": 83.17
+    },
+    {
+      "word": "what",
+      "start": 83.17,
+      "end": 83.495
+    },
+    {
+      "word": "was",
+      "start": 83.495,
+      "end": 83.82
+    },
+    {
+      "word": "waiting",
+      "start": 83.82,
+      "end": 84.386
+    },
+    {
+      "word": "for",
+      "start": 84.386,
+      "end": 84.711
+    },
+    {
+      "word": "Him",
+      "start": 84.711,
+      "end": 85.035
+    },
+    {
+      "word": "Yet",
+      "start": 85.808,
+      "end": 86.038
+    },
+    {
+      "word": "He",
+      "start": 86.038,
+      "end": 86.269
+    },
+    {
+      "word": "willingly",
+      "start": 86.269,
+      "end": 86.84
+    },
+    {
+      "word": "continued",
+      "start": 86.84,
+      "end": 87.412
+    },
+    {
+      "word": "toward",
+      "start": 87.412,
+      "end": 87.812
+    },
+    {
+      "word": "Jerusalem",
+      "start": 87.812,
+      "end": 88.554
+    },
+    {
+      "word": "He",
+      "start": 89.442,
+      "end": 89.994
+    },
+    {
+      "word": "knew",
+      "start": 89.994,
+      "end": 90.545
+    },
+    {
+      "word": "that",
+      "start": 90.545,
+      "end": 91.096
+    },
+    {
+      "word": "His",
+      "start": 91.096,
+      "end": 91.648
+    },
+    {
+      "word": "mission",
+      "start": 91.648,
+      "end": 92.607
+    },
+    {
+      "word": "would",
+      "start": 92.607,
+      "end": 93.159
+    },
+    {
+      "word": "lead",
+      "start": 93.159,
+      "end": 93.71
+    },
+    {
+      "word": "to",
+      "start": 93.71,
+      "end": 94.262
+    },
+    {
+      "word": "the",
+      "start": 94.262,
+      "end": 94.813
+    },
+    {
+      "word": "cross",
+      "start": 94.813,
+      "end": 95.364
+    },
+    {
+      "word": "In",
+      "start": 96.118,
+      "end": 96.29
+    },
+    {
+      "word": "the",
+      "start": 96.29,
+      "end": 96.463
+    },
+    {
+      "word": "Gospel",
+      "start": 96.463,
+      "end": 96.763
+    },
+    {
+      "word": "of",
+      "start": 96.763,
+      "end": 96.936
+    },
+    {
+      "word": "Matthew",
+      "start": 96.936,
+      "end": 97.236
+    },
+    {
+      "word": "chapter",
+      "start": 97.236,
+      "end": 97.537
+    },
+    {
+      "word": "twenty-seven",
+      "start": 97.537,
+      "end": 98.093
+    },
+    {
+      "word": "we",
+      "start": 98.093,
+      "end": 98.265
+    },
+    {
+      "word": "read",
+      "start": 98.265,
+      "end": 98.438
+    },
+    {
+      "word": "about",
+      "start": 98.438,
+      "end": 98.738
+    },
+    {
+      "word": "the",
+      "start": 98.738,
+      "end": 98.911
+    },
+    {
+      "word": "events",
+      "start": 98.911,
+      "end": 99.211
+    },
+    {
+      "word": "surrounding",
+      "start": 99.211,
+      "end": 99.639
+    },
+    {
+      "word": "His",
+      "start": 99.639,
+      "end": 99.812
+    },
+    {
+      "word": "crucifixion",
+      "start": 99.812,
+      "end": 100.368
+    },
+    {
+      "word": "Jesus",
+      "start": 101.182,
+      "end": 101.551
+    },
+    {
+      "word": "was",
+      "start": 101.551,
+      "end": 101.762
+    },
+    {
+      "word": "mocked",
+      "start": 101.762,
+      "end": 102.131
+    },
+    {
+      "word": "beaten",
+      "start": 102.131,
+      "end": 102.5
+    },
+    {
+      "word": "and",
+      "start": 102.5,
+      "end": 102.712
+    },
+    {
+      "word": "led",
+      "start": 102.712,
+      "end": 102.923
+    },
+    {
+      "word": "to",
+      "start": 102.923,
+      "end": 103.135
+    },
+    {
+      "word": "a",
+      "start": 103.135,
+      "end": 103.347
+    },
+    {
+      "word": "place",
+      "start": 103.347,
+      "end": 103.559
+    },
+    {
+      "word": "called",
+      "start": 103.559,
+      "end": 103.927
+    },
+    {
+      "word": "Golgotha",
+      "start": 103.927,
+      "end": 104.453
+    },
+    {
+      "word": "There",
+      "start": 105.312,
+      "end": 105.685
+    },
+    {
+      "word": "He",
+      "start": 105.685,
+      "end": 106.058
+    },
+    {
+      "word": "was",
+      "start": 106.058,
+      "end": 106.431
+    },
+    {
+      "word": "nailed",
+      "start": 106.431,
+      "end": 107.081
+    },
+    {
+      "word": "to",
+      "start": 107.081,
+      "end": 107.454
+    },
+    {
+      "word": "a",
+      "start": 107.454,
+      "end": 107.827
+    },
+    {
+      "word": "cross",
+      "start": 107.827,
+      "end": 108.2
+    },
+    {
+      "word": "between",
+      "start": 108.2,
+      "end": 108.85
+    },
+    {
+      "word": "two",
+      "start": 108.85,
+      "end": 109.223
+    },
+    {
+      "word": "criminals",
+      "start": 109.223,
+      "end": 110.149
+    },
+    {
+      "word": "As",
+      "start": 110.9,
+      "end": 111.052
+    },
+    {
+      "word": "He",
+      "start": 111.052,
+      "end": 111.204
+    },
+    {
+      "word": "suffered",
+      "start": 111.204,
+      "end": 111.582
+    },
+    {
+      "word": "Jesus",
+      "start": 111.582,
+      "end": 111.847
+    },
+    {
+      "word": "spoke",
+      "start": 111.847,
+      "end": 111.999
+    },
+    {
+      "word": "words",
+      "start": 111.999,
+      "end": 112.151
+    },
+    {
+      "word": "that",
+      "start": 112.151,
+      "end": 112.303
+    },
+    {
+      "word": "revealed",
+      "start": 112.303,
+      "end": 112.681
+    },
+    {
+      "word": "the",
+      "start": 112.681,
+      "end": 112.833
+    },
+    {
+      "word": "depth",
+      "start": 112.833,
+      "end": 112.985
+    },
+    {
+      "word": "of",
+      "start": 112.985,
+      "end": 113.137
+    },
+    {
+      "word": "His",
+      "start": 113.137,
+      "end": 113.289
+    },
+    {
+      "word": "mercy",
+      "start": 113.289,
+      "end": 113.554
+    },
+    {
+      "word": "In",
+      "start": 114.292,
+      "end": 114.49
+    },
+    {
+      "word": "Luke",
+      "start": 114.49,
+      "end": 114.687
+    },
+    {
+      "word": "chapter",
+      "start": 114.687,
+      "end": 115.031
+    },
+    {
+      "word": "twenty-three",
+      "start": 115.031,
+      "end": 115.521
+    },
+    {
+      "word": "verse",
+      "start": 115.521,
+      "end": 115.719
+    },
+    {
+      "word": "thirty-four",
+      "start": 115.719,
+      "end": 116.209
+    },
+    {
+      "word": "He",
+      "start": 116.209,
+      "end": 116.406
+    },
+    {
+      "word": "prayed",
+      "start": 116.406,
+      "end": 116.604
+    },
+    {
+      "word": "Father",
+      "start": 116.604,
+      "end": 116.948
+    },
+    {
+      "word": "forgive",
+      "start": 116.948,
+      "end": 117.292
+    },
+    {
+      "word": "them",
+      "start": 117.292,
+      "end": 117.489
+    },
+    {
+      "word": "for",
+      "start": 117.489,
+      "end": 117.687
+    },
+    {
+      "word": "they",
+      "start": 117.687,
+      "end": 117.884
+    },
+    {
+      "word": "know",
+      "start": 117.884,
+      "end": 118.082
+    },
+    {
+      "word": "not",
+      "start": 118.082,
+      "end": 118.279
+    },
+    {
+      "word": "what",
+      "start": 118.279,
+      "end": 118.477
+    },
+    {
+      "word": "they",
+      "start": 118.477,
+      "end": 118.674
+    },
+    {
+      "word": "do",
+      "start": 118.674,
+      "end": 118.872
+    },
+    {
+      "word": "Even",
+      "start": 119.668,
+      "end": 120.069
+    },
+    {
+      "word": "in",
+      "start": 120.069,
+      "end": 120.3
+    },
+    {
+      "word": "His",
+      "start": 120.3,
+      "end": 120.531
+    },
+    {
+      "word": "suffering",
+      "start": 120.531,
+      "end": 121.103
+    },
+    {
+      "word": "Jesus",
+      "start": 121.103,
+      "end": 121.504
+    },
+    {
+      "word": "showed",
+      "start": 121.504,
+      "end": 121.906
+    },
+    {
+      "word": "compassion",
+      "start": 121.906,
+      "end": 122.478
+    },
+    {
+      "word": "toward",
+      "start": 122.478,
+      "end": 122.879
+    },
+    {
+      "word": "those",
+      "start": 122.879,
+      "end": 123.11
+    },
+    {
+      "word": "who",
+      "start": 123.11,
+      "end": 123.34
+    },
+    {
+      "word": "were",
+      "start": 123.34,
+      "end": 123.571
+    },
+    {
+      "word": "hurting",
+      "start": 123.571,
+      "end": 123.972
+    },
+    {
+      "word": "Him",
+      "start": 123.972,
+      "end": 124.203
+    },
+    {
+      "word": "Then",
+      "start": 124.848,
+      "end": 125.096
+    },
+    {
+      "word": "darkness",
+      "start": 125.096,
+      "end": 125.528
+    },
+    {
+      "word": "covered",
+      "start": 125.528,
+      "end": 126.143
+    },
+    {
+      "word": "the",
+      "start": 126.143,
+      "end": 126.391
+    },
+    {
+      "word": "land",
+      "start": 126.391,
+      "end": 126.639
+    },
+    {
+      "word": "And",
+      "start": 127.239,
+      "end": 127.495
+    },
+    {
+      "word": "according",
+      "start": 127.495,
+      "end": 128.13
+    },
+    {
+      "word": "to",
+      "start": 128.13,
+      "end": 128.386
+    },
+    {
+      "word": "Matthew",
+      "start": 128.386,
+      "end": 128.831
+    },
+    {
+      "word": "chapter",
+      "start": 128.831,
+      "end": 129.277
+    },
+    {
+      "word": "twenty-seven",
+      "start": 129.277,
+      "end": 130.102
+    },
+    {
+      "word": "when",
+      "start": 130.102,
+      "end": 130.358
+    },
+    {
+      "word": "Jesus",
+      "start": 130.358,
+      "end": 130.803
+    },
+    {
+      "word": "died",
+      "start": 130.803,
+      "end": 131.059
+    },
+    {
+      "word": "the",
+      "start": 131.059,
+      "end": 131.315
+    },
+    {
+      "word": "curtain",
+      "start": 131.315,
+      "end": 131.76
+    },
+    {
+      "word": "of",
+      "start": 131.76,
+      "end": 132.016
+    },
+    {
+      "word": "the",
+      "start": 132.016,
+      "end": 132.272
+    },
+    {
+      "word": "temple",
+      "start": 132.272,
+      "end": 132.528
+    },
+    {
+      "word": "was",
+      "start": 132.528,
+      "end": 132.784
+    },
+    {
+      "word": "torn",
+      "start": 132.784,
+      "end": 133.04
+    },
+    {
+      "word": "in",
+      "start": 133.04,
+      "end": 133.296
+    },
+    {
+      "word": "two",
+      "start": 133.296,
+      "end": 133.552
+    },
+    {
+      "word": "This",
+      "start": 134.173,
+      "end": 135.227
+    },
+    {
+      "word": "moment",
+      "start": 135.227,
+      "end": 137.062
+    },
+    {
+      "word": "carried",
+      "start": 137.062,
+      "end": 138.897
+    },
+    {
+      "word": "deep",
+      "start": 138.897,
+      "end": 139.951
+    },
+    {
+      "word": "spiritual",
+      "start": 139.951,
+      "end": 142.566
+    },
+    {
+      "word": "meaning",
+      "start": 142.566,
+      "end": 144.401
+    },
+    {
+      "word": "The",
+      "start": 145.371,
+      "end": 145.499
+    },
+    {
+      "word": "torn",
+      "start": 145.499,
+      "end": 145.626
+    },
+    {
+      "word": "curtain",
+      "start": 145.626,
+      "end": 145.848
+    },
+    {
+      "word": "symbolized",
+      "start": 145.848,
+      "end": 146.26
+    },
+    {
+      "word": "a",
+      "start": 146.26,
+      "end": 146.387
+    },
+    {
+      "word": "new",
+      "start": 146.387,
+      "end": 146.515
+    },
+    {
+      "word": "way",
+      "start": 146.515,
+      "end": 146.642
+    },
+    {
+      "word": "of",
+      "start": 146.642,
+      "end": 146.77
+    },
+    {
+      "word": "access",
+      "start": 146.77,
+      "end": 146.992
+    },
+    {
+      "word": "to",
+      "start": 146.992,
+      "end": 147.12
+    },
+    {
+      "word": "God",
+      "start": 147.12,
+      "end": 147.247
+    },
+    {
+      "word": "through",
+      "start": 147.247,
+      "end": 147.375
+    },
+    {
+      "word": "Jesus",
+      "start": 147.375,
+      "end": 147.597
+    },
+    {
+      "word": "In",
+      "start": 148.55,
+      "end": 148.608
+    },
+    {
+      "word": "John",
+      "start": 148.608,
+      "end": 148.666
+    },
+    {
+      "word": "chapter",
+      "start": 148.666,
+      "end": 148.767
+    },
+    {
+      "word": "nineteen",
+      "start": 148.767,
+      "end": 148.911
+    },
+    {
+      "word": "verse",
+      "start": 148.911,
+      "end": 148.969
+    },
+    {
+      "word": "thirty",
+      "start": 148.969,
+      "end": 149.07
+    },
+    {
+      "word": "Jesus",
+      "start": 149.07,
+      "end": 149.171
+    },
+    {
+      "word": "spoke",
+      "start": 149.171,
+      "end": 149.229
+    },
+    {
+      "word": "His",
+      "start": 149.229,
+      "end": 149.287
+    },
+    {
+      "word": "final",
+      "start": 149.287,
+      "end": 149.388
+    },
+    {
+      "word": "words",
+      "start": 149.388,
+      "end": 149.446
+    },
+    {
+      "word": "It",
+      "start": 150.429,
+      "end": 150.996
+    },
+    {
+      "word": "is",
+      "start": 150.996,
+      "end": 151.564
+    },
+    {
+      "word": "finished",
+      "start": 151.564,
+      "end": 152.972
+    },
+    {
+      "word": "His",
+      "start": 153.827,
+      "end": 154.031
+    },
+    {
+      "word": "earthly",
+      "start": 154.031,
+      "end": 154.385
+    },
+    {
+      "word": "mission",
+      "start": 154.385,
+      "end": 154.74
+    },
+    {
+      "word": "had",
+      "start": 154.74,
+      "end": 154.943
+    },
+    {
+      "word": "reached",
+      "start": 154.943,
+      "end": 155.298
+    },
+    {
+      "word": "its",
+      "start": 155.298,
+      "end": 155.502
+    },
+    {
+      "word": "completion",
+      "start": 155.502,
+      "end": 156.007
+    },
+    {
+      "word": "But",
+      "start": 156.703,
+      "end": 156.863
+    },
+    {
+      "word": "the",
+      "start": 156.863,
+      "end": 157.023
+    },
+    {
+      "word": "story",
+      "start": 157.023,
+      "end": 157.302
+    },
+    {
+      "word": "did",
+      "start": 157.302,
+      "end": 157.462
+    },
+    {
+      "word": "not",
+      "start": 157.462,
+      "end": 157.622
+    },
+    {
+      "word": "end",
+      "start": 157.622,
+      "end": 157.783
+    },
+    {
+      "word": "at",
+      "start": 157.783,
+      "end": 157.943
+    },
+    {
+      "word": "the",
+      "start": 157.943,
+      "end": 158.103
+    },
+    {
+      "word": "cross",
+      "start": 158.103,
+      "end": 158.263
+    },
+    {
+      "word": "Jesus",
+      "start": 159.062,
+      "end": 159.546
+    },
+    {
+      "word": "was",
+      "start": 159.546,
+      "end": 159.824
+    },
+    {
+      "word": "buried",
+      "start": 159.824,
+      "end": 160.309
+    },
+    {
+      "word": "in",
+      "start": 160.309,
+      "end": 160.587
+    },
+    {
+      "word": "a",
+      "start": 160.587,
+      "end": 160.865
+    },
+    {
+      "word": "tomb",
+      "start": 160.865,
+      "end": 161.143
+    },
+    {
+      "word": "And",
+      "start": 161.913,
+      "end": 162.337
+    },
+    {
+      "word": "on",
+      "start": 162.337,
+      "end": 162.761
+    },
+    {
+      "word": "the",
+      "start": 162.761,
+      "end": 163.184
+    },
+    {
+      "word": "third",
+      "start": 163.184,
+      "end": 163.608
+    },
+    {
+      "word": "day",
+      "start": 163.608,
+      "end": 164.032
+    },
+    {
+      "word": "He",
+      "start": 164.032,
+      "end": 164.456
+    },
+    {
+      "word": "rose",
+      "start": 164.456,
+      "end": 164.879
+    },
+    {
+      "word": "again",
+      "start": 164.879,
+      "end": 165.617
+    },
+    {
+      "word": "First",
+      "start": 166.281,
+      "end": 166.544
+    },
+    {
+      "word": "Corinthians",
+      "start": 166.544,
+      "end": 167.198
+    },
+    {
+      "word": "chapter",
+      "start": 167.198,
+      "end": 167.656
+    },
+    {
+      "word": "fifteen",
+      "start": 167.656,
+      "end": 168.114
+    },
+    {
+      "word": "verses",
+      "start": 168.114,
+      "end": 168.573
+    },
+    {
+      "word": "three",
+      "start": 168.573,
+      "end": 168.836
+    },
+    {
+      "word": "and",
+      "start": 168.836,
+      "end": 169.099
+    },
+    {
+      "word": "four",
+      "start": 169.099,
+      "end": 169.362
+    },
+    {
+      "word": "describes",
+      "start": 169.362,
+      "end": 170.016
+    },
+    {
+      "word": "the",
+      "start": 170.016,
+      "end": 170.279
+    },
+    {
+      "word": "central",
+      "start": 170.279,
+      "end": 170.737
+    },
+    {
+      "word": "message",
+      "start": 170.737,
+      "end": 171.196
+    },
+    {
+      "word": "of",
+      "start": 171.196,
+      "end": 171.459
+    },
+    {
+      "word": "the",
+      "start": 171.459,
+      "end": 171.722
+    },
+    {
+      "word": "Christian",
+      "start": 171.722,
+      "end": 172.181
+    },
+    {
+      "word": "faith",
+      "start": 172.181,
+      "end": 172.444
+    },
+    {
+      "word": "Christ",
+      "start": 173.024,
+      "end": 173.126
+    },
+    {
+      "word": "died",
+      "start": 173.126,
+      "end": 173.229
+    },
+    {
+      "word": "for",
+      "start": 173.229,
+      "end": 173.331
+    },
+    {
+      "word": "our",
+      "start": 173.331,
+      "end": 173.433
+    },
+    {
+      "word": "sins",
+      "start": 173.433,
+      "end": 173.535
+    },
+    {
+      "word": "was",
+      "start": 173.535,
+      "end": 173.638
+    },
+    {
+      "word": "buried",
+      "start": 173.638,
+      "end": 173.816
+    },
+    {
+      "word": "and",
+      "start": 173.816,
+      "end": 173.918
+    },
+    {
+      "word": "was",
+      "start": 173.918,
+      "end": 174.02
+    },
+    {
+      "word": "raised",
+      "start": 174.02,
+      "end": 174.198
+    },
+    {
+      "word": "on",
+      "start": 174.198,
+      "end": 174.3
+    },
+    {
+      "word": "the",
+      "start": 174.3,
+      "end": 174.402
+    },
+    {
+      "word": "third",
+      "start": 174.402,
+      "end": 174.505
+    },
+    {
+      "word": "day",
+      "start": 174.505,
+      "end": 174.607
+    },
+    {
+      "word": "The",
+      "start": 175.345,
+      "end": 176.526
+    },
+    {
+      "word": "cross",
+      "start": 176.526,
+      "end": 177.708
+    },
+    {
+      "word": "represents",
+      "start": 177.708,
+      "end": 180.639
+    },
+    {
+      "word": "sacrifice",
+      "start": 180.639,
+      "end": 183.57
+    },
+    {
+      "word": "It",
+      "start": 184.526,
+      "end": 185.064
+    },
+    {
+      "word": "represents",
+      "start": 185.064,
+      "end": 186.4
+    },
+    {
+      "word": "forgiveness",
+      "start": 186.4,
+      "end": 188.134
+    },
+    {
+      "word": "And",
+      "start": 188.798,
+      "end": 189.043
+    },
+    {
+      "word": "above",
+      "start": 189.043,
+      "end": 189.471
+    },
+    {
+      "word": "all",
+      "start": 189.471,
+      "end": 189.716
+    },
+    {
+      "word": "it",
+      "start": 189.716,
+      "end": 189.962
+    },
+    {
+      "word": "reveals",
+      "start": 189.962,
+      "end": 190.389
+    },
+    {
+      "word": "the",
+      "start": 190.389,
+      "end": 190.635
+    },
+    {
+      "word": "depth",
+      "start": 190.635,
+      "end": 190.88
+    },
+    {
+      "word": "of",
+      "start": 190.88,
+      "end": 191.126
+    },
+    {
+      "word": "God's",
+      "start": 191.126,
+      "end": 191.371
+    },
+    {
+      "word": "love",
+      "start": 191.371,
+      "end": 191.617
+    },
+    {
+      "word": "for",
+      "start": 191.617,
+      "end": 191.862
+    },
+    {
+      "word": "humanity",
+      "start": 191.862,
+      "end": 192.653
+    },
+    {
+      "word": "Jesus",
+      "start": 193.288,
+      "end": 193.676
+    },
+    {
+      "word": "did",
+      "start": 193.676,
+      "end": 193.899
+    },
+    {
+      "word": "not",
+      "start": 193.899,
+      "end": 194.122
+    },
+    {
+      "word": "go",
+      "start": 194.122,
+      "end": 194.345
+    },
+    {
+      "word": "to",
+      "start": 194.345,
+      "end": 194.568
+    },
+    {
+      "word": "the",
+      "start": 194.568,
+      "end": 194.791
+    },
+    {
+      "word": "cross",
+      "start": 194.791,
+      "end": 195.014
+    },
+    {
+      "word": "because",
+      "start": 195.014,
+      "end": 195.402
+    },
+    {
+      "word": "He",
+      "start": 195.402,
+      "end": 195.625
+    },
+    {
+      "word": "had",
+      "start": 195.625,
+      "end": 195.848
+    },
+    {
+      "word": "no",
+      "start": 195.848,
+      "end": 196.071
+    },
+    {
+      "word": "choice",
+      "start": 196.071,
+      "end": 196.294
+    },
+    {
+      "word": "He",
+      "start": 197.021,
+      "end": 197.171
+    },
+    {
+      "word": "gave",
+      "start": 197.171,
+      "end": 197.321
+    },
+    {
+      "word": "His",
+      "start": 197.321,
+      "end": 197.472
+    },
+    {
+      "word": "life",
+      "start": 197.472,
+      "end": 197.622
+    },
+    {
+      "word": "so",
+      "start": 197.622,
+      "end": 197.772
+    },
+    {
+      "word": "that",
+      "start": 197.772,
+      "end": 197.922
+    },
+    {
+      "word": "humanity",
+      "start": 197.922,
+      "end": 198.406
+    },
+    {
+      "word": "could",
+      "start": 198.406,
+      "end": 198.556
+    },
+    {
+      "word": "be",
+      "start": 198.556,
+      "end": 198.707
+    },
+    {
+      "word": "reconciled",
+      "start": 198.707,
+      "end": 199.191
+    },
+    {
+      "word": "with",
+      "start": 199.191,
+      "end": 199.341
+    },
+    {
+      "word": "God",
+      "start": 199.341,
+      "end": 199.491
+    },
+    {
+      "word": "And",
+      "start": 200.14,
+      "end": 200.429
+    },
+    {
+      "word": "His",
+      "start": 200.429,
+      "end": 200.718
+    },
+    {
+      "word": "resurrection",
+      "start": 200.718,
+      "end": 201.65
+    },
+    {
+      "word": "gives",
+      "start": 201.65,
+      "end": 202.153
+    },
+    {
+      "word": "Christians",
+      "start": 202.153,
+      "end": 202.656
+    },
+    {
+      "word": "the",
+      "start": 202.656,
+      "end": 202.946
+    },
+    {
+      "word": "hope",
+      "start": 202.946,
+      "end": 203.235
+    },
+    {
+      "word": "of",
+      "start": 203.235,
+      "end": 203.524
+    },
+    {
+      "word": "new",
+      "start": 203.524,
+      "end": 203.813
+    },
+    {
+      "word": "life",
+      "start": 203.813,
+      "end": 204.102
+    },
+    {
+      "word": "So",
+      "start": 204.714,
+      "end": 204.826
+    },
+    {
+      "word": "why",
+      "start": 204.826,
+      "end": 204.937
+    },
+    {
+      "word": "did",
+      "start": 204.937,
+      "end": 205.049
+    },
+    {
+      "word": "Jesus",
+      "start": 205.049,
+      "end": 205.244
+    },
+    {
+      "word": "have",
+      "start": 205.244,
+      "end": 205.355
+    },
+    {
+      "word": "to",
+      "start": 205.355,
+      "end": 205.467
+    },
+    {
+      "word": "die",
+      "start": 205.467,
+      "end": 205.579
+    },
+    {
+      "word": "on",
+      "start": 205.579,
+      "end": 205.691
+    },
+    {
+      "word": "the",
+      "start": 205.691,
+      "end": 205.802
+    },
+    {
+      "word": "cross",
+      "start": 205.802,
+      "end": 205.914
+    },
+    {
+      "word": "According",
+      "start": 206.548,
+      "end": 207.574
+    },
+    {
+      "word": "to",
+      "start": 207.574,
+      "end": 207.988
+    },
+    {
+      "word": "the",
+      "start": 207.988,
+      "end": 208.401
+    },
+    {
+      "word": "Christian",
+      "start": 208.401,
+      "end": 209.121
+    },
+    {
+      "word": "faith",
+      "start": 209.121,
+      "end": 209.534
+    },
+    {
+      "word": "He",
+      "start": 209.534,
+      "end": 209.948
+    },
+    {
+      "word": "died",
+      "start": 209.948,
+      "end": 210.361
+    },
+    {
+      "word": "to",
+      "start": 210.361,
+      "end": 210.775
+    },
+    {
+      "word": "bear",
+      "start": 210.775,
+      "end": 211.189
+    },
+    {
+      "word": "the",
+      "start": 211.189,
+      "end": 211.602
+    },
+    {
+      "word": "burden",
+      "start": 211.602,
+      "end": 212.322
+    },
+    {
+      "word": "of",
+      "start": 212.322,
+      "end": 212.735
+    },
+    {
+      "word": "sin",
+      "start": 212.735,
+      "end": 213.149
+    },
+    {
+      "word": "demonstrate",
+      "start": 213.149,
+      "end": 214.175
+    },
+    {
+      "word": "God's",
+      "start": 214.175,
+      "end": 214.589
+    },
+    {
+      "word": "love",
+      "start": 214.589,
+      "end": 215.002
+    },
+    {
+      "word": "and",
+      "start": 215.002,
+      "end": 215.416
+    },
+    {
+      "word": "open",
+      "start": 215.416,
+      "end": 216.135
+    },
+    {
+      "word": "the",
+      "start": 216.135,
+      "end": 216.549
+    },
+    {
+      "word": "way",
+      "start": 216.549,
+      "end": 216.962
+    },
+    {
+      "word": "to",
+      "start": 216.962,
+      "end": 217.376
+    },
+    {
+      "word": "salvation",
+      "start": 217.376,
+      "end": 218.402
+    },
+    {
+      "word": "The",
+      "start": 219.08,
+      "end": 219.216
+    },
+    {
+      "word": "cross",
+      "start": 219.216,
+      "end": 219.352
+    },
+    {
+      "word": "reminds",
+      "start": 219.352,
+      "end": 219.589
+    },
+    {
+      "word": "us",
+      "start": 219.589,
+      "end": 219.725
+    },
+    {
+      "word": "that",
+      "start": 219.725,
+      "end": 219.861
+    },
+    {
+      "word": "even",
+      "start": 219.861,
+      "end": 220.098
+    },
+    {
+      "word": "in",
+      "start": 220.098,
+      "end": 220.234
+    },
+    {
+      "word": "humanity's",
+      "start": 220.234,
+      "end": 220.672
+    },
+    {
+      "word": "darkest",
+      "start": 220.672,
+      "end": 220.909
+    },
+    {
+      "word": "moment",
+      "start": 220.909,
+      "end": 221.146
+    },
+    {
+      "word": "God's",
+      "start": 221.146,
+      "end": 221.282
+    },
+    {
+      "word": "love",
+      "start": 221.282,
+      "end": 221.418
+    },
+    {
+      "word": "was",
+      "start": 221.418,
+      "end": 221.554
+    },
+    {
+      "word": "reaching",
+      "start": 221.554,
+      "end": 221.791
+    },
+    {
+      "word": "out",
+      "start": 221.791,
+      "end": 221.927
+    },
+    {
+      "word": "to",
+      "start": 221.927,
+      "end": 222.063
+    },
+    {
+      "word": "the",
+      "start": 222.063,
+      "end": 222.199
+    },
+    {
+      "word": "world",
+      "start": 222.199,
+      "end": 222.335
+    },
+    {
+      "word": "And",
+      "start": 223.132,
+      "end": 223.328
+    },
+    {
+      "word": "the",
+      "start": 223.328,
+      "end": 223.524
+    },
+    {
+      "word": "empty",
+      "start": 223.524,
+      "end": 223.866
+    },
+    {
+      "word": "tomb",
+      "start": 223.866,
+      "end": 224.062
+    },
+    {
+      "word": "reminds",
+      "start": 224.062,
+      "end": 224.404
+    },
+    {
+      "word": "us",
+      "start": 224.404,
+      "end": 224.6
+    },
+    {
+      "word": "that",
+      "start": 224.6,
+      "end": 224.796
+    },
+    {
+      "word": "death",
+      "start": 224.796,
+      "end": 224.992
+    },
+    {
+      "word": "does",
+      "start": 224.992,
+      "end": 225.189
+    },
+    {
+      "word": "not",
+      "start": 225.189,
+      "end": 225.385
+    },
+    {
+      "word": "have",
+      "start": 225.385,
+      "end": 225.581
+    },
+    {
+      "word": "the",
+      "start": 225.581,
+      "end": 225.777
+    },
+    {
+      "word": "final",
+      "start": 225.777,
+      "end": 226.119
+    },
+    {
+      "word": "word",
+      "start": 226.119,
+      "end": 226.315
+    },
+    {
+      "word": "That",
+      "start": 227.135,
+      "end": 227.273
+    },
+    {
+      "word": "is",
+      "start": 227.273,
+      "end": 227.41
+    },
+    {
+      "word": "the",
+      "start": 227.41,
+      "end": 227.548
+    },
+    {
+      "word": "meaning",
+      "start": 227.548,
+      "end": 227.788
+    },
+    {
+      "word": "of",
+      "start": 227.788,
+      "end": 227.926
+    },
+    {
+      "word": "Jesus'",
+      "start": 227.926,
+      "end": 228.165
+    },
+    {
+      "word": "sacrifice",
+      "start": 228.165,
+      "end": 228.507
+    },
+    {
+      "word": "That",
+      "start": 229.139,
+      "end": 229.244
+    },
+    {
+      "word": "is",
+      "start": 229.244,
+      "end": 229.349
+    },
+    {
+      "word": "the",
+      "start": 229.349,
+      "end": 229.454
+    },
+    {
+      "word": "hope",
+      "start": 229.454,
+      "end": 229.559
+    },
+    {
+      "word": "of",
+      "start": 229.559,
+      "end": 229.664
+    },
+    {
+      "word": "the",
+      "start": 229.664,
+      "end": 229.769
+    },
+    {
+      "word": "resurrection",
+      "start": 229.769,
+      "end": 230.107
+    }
+  ]
+}

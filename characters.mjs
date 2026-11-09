@@ -96,6 +96,15 @@ export const CHARACTERS = {
     look: 'John the apostle, a younger man with dark hair, a simple pale robe',
     role: 'looking upward in wonder',
   },
+  judas: {
+    aliases: ['judas', 'judas iscariot', 'iscariot', 'the betrayer', 'the traitor'],
+    // The money pouch is the whole character in one object: he carried the bag
+    // for the twelve, and the bag is what the story turns on. Giving him a
+    // readable prop matters more than his face, which no account describes.
+    look: 'Judas Iscariot, a lean man with dark curly hair and a short beard, a muted ochre robe, '
+      + 'a small leather money pouch hanging at his belt, face turned half away from the light',
+    role: 'standing apart from the others',
+  },
   baptist: {
     aliases: ['john the baptist'],
     look: 'John the Baptist, a wild-looking man with long matted hair and beard, '

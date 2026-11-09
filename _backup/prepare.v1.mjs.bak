@@ -1,0 +1,582 @@
+#!/usr/bin/env node
+// prepare.mjs — Faith Reel Studio automation
+// Usage: node prepare.mjs <slug> [duration_in_seconds]
+//
+// Steps this script handles automatically:
+//  1. Reads stories/<slug>/script.txt  (your narration lines)
+//  2. Reads stories/<slug>/story.json  (title, scripture; scenes optional)
+//  3. Reads stories/<slug>/voice.mp3   (ElevenLabs export)
+//  4. Detects audio duration via ffprobe (or estimates from syllable count)
+//  5. Splits long lines into readable caption chunks
+//  6. Times each chunk by SYLLABLES + punctuation pauses, normalised to the
+//     exact audio length so captions never drift away from the voice
+//  7. One chunk per caption block — a single sentence on screen at a time
+//  8. Picks a scene per ~9.5s window by matching THAT window's own words,
+//     so two different scripts produce two different scene sequences
+//  9. Copies voice.mp3 -> public/story-voice.mp3  (NEVER touches voice.mp3)
+// 10. Writes src/story-timeline.ts (auto-generated, safe to regenerate)
+//
+// All execution lives in main(), called at the bottom of this file, so every
+// module-level constant below is fully initialised before anything runs.
+
+import fs from 'fs';
+import path from 'path';
+import {execSync} from 'child_process';
+
+// ═══ Tuning ═══════════════════════════════════════════════════════════════════
+
+const LEAD_IN        = 0.45;  // silence before the first caption (seconds)
+const TAIL_PAD       = 0.10;  // keep the last caption just inside the audio
+const MAX_WORDS      = 13;    // hard cap on words shown on screen at once
+const CAPTION_GAP    = 0.06;  // visual breath between captions (seconds)
+const SCENE_TARGET_S = 9.5;   // aim for a scene change about this often
+const SCENE_MIN      = 4;
+const SCENE_MAX      = 18;
+const FPS            = 30;
+
+// Pause cost in "syllable equivalents" — tuned against natural narration.
+const PAUSE_SENTENCE = 1.30;  // . ! ?
+const PAUSE_CLAUSE   = 0.55;  // , ; :
+const PAUSE_DASH     = 0.50;  // — –
+const PAUSE_ELLIPSIS = 1.00;  // …
+
+// Words that make an acceptable caption break when no punctuation is available.
+const CONJUNCTIONS = /^(and|but|so|because|that|when|then|for|yet|or|if|though|while|as|since|until)$/i;
+
+// Words rendered in ember/caps for emphasis.
+const EMPHASIS = [
+  'god', 'jesus', 'christ', 'lord', 'spirit', 'father', 'king',
+  'faith', 'trust', 'hope', 'grace', 'mercy', 'peace', 'love', 'joy',
+  'promise', 'provide', 'cross', 'blood', 'light', 'life', 'truth',
+  'forgive', 'free', 'healed', 'saved', 'risen', 'eternal', 'never', 'always',
+];
+
+/**
+ * Keywords that suggest each scene, in two tiers:
+ *   core — words that genuinely mean "this scene". Full weight.
+ *   hint — supporting words. Partial weight, so an incidental match can
+ *          never outrank a thematic one ("future" must not beat "anxious").
+ * Scoring is word-boundary based, so "go" no longer matches "God" and
+ * "day" no longer matches "today".
+ * Every id here must exist in STORY_SCENE_MAP (src/StoryScenes.tsx) or
+ * SCENE_MAP (src/Scenes.tsx).
+ */
+const SCENE_KEYWORDS = {
+  // anxiety · storm · fear
+  storm:      {core: ['anxious', 'anxiety', 'worry', 'worried', 'worries', 'afraid', 'fear', 'fearful', 'panic', 'storm'],
+               hint: ['troubled', 'shaken', 'chaos', 'overwhelmed', 'restless']},
+  burden:     {core: ['burden', 'heavy', 'weary', 'exhausted', 'weight'],
+               hint: ['carry', 'tired', 'struggle', 'struggling', 'pressure', 'stress', 'alone']},
+  deepwater:  {core: ['drowning', 'sinking', 'overwhelm', 'overwhelming', 'depths', 'flood'],
+               hint: ['deep', 'waters', 'lost', 'under']},
+
+  // peace · calm · comfort
+  stillwater: {core: ['still', 'quiet', 'stillness', 'silence', 'restores'],
+               hint: ['calm', 'reflect', 'reflection', 'soul', 'peaceful']},
+  shelter:    {core: ['shelter', 'refuge', 'fortress', 'hiding', 'shield'],
+               hint: ['safe', 'protect', 'protection', 'cover', 'secure']},
+  calm:       {core: ['peace', 'comfort', 'breathe', 'soothe', 'content'],
+               hint: ['gentle', 'ease', 'settle', 'quieted', 'rest']},
+
+  // prayer · crying out
+  kneel:      {core: ['pray', 'prayer', 'praying', 'kneel', 'confess', 'plead'],
+               hint: ['humble', 'cry', 'crying', 'ask', 'asking', 'petition', 'tell him']},
+  handsup:    {core: ['praise', 'worship', 'surrender', 'thanksgiving', 'rejoice'],
+               hint: ['lift', 'raise', 'glory', 'grateful', 'thank', 'sing']},
+  incense:    {core: ['offering', 'sacrifice', 'altar', 'incense', 'intercede', 'intercession'],
+               hint: ['consecrate', 'devotion']},
+
+  // faith · trust · waiting
+  watchtower: {core: ['wait', 'waiting', 'patience', 'patient', 'watchman'],
+               hint: ['watch', 'expect', 'tomorrow', 'future', 'ahead', 'soon']},
+  anchor:     {core: ['anchor', 'unshaken', 'foundation', 'steady', 'firm'],
+               hint: ['hold', 'holds', 'sure', 'certain']},
+  seed:       {core: ['seed', 'grow', 'growth', 'plant', 'mustard', 'root'],
+               hint: ['small', 'begin', 'beginning', 'start', 'little']},
+  lamp:       {core: ['guide', 'guidance', 'direction', 'lamp', 'wisdom'],
+               hint: ['path', 'step', 'steps', 'lead', 'show']},
+
+  // journey · path · valley
+  valley:     {core: ['valley', 'shadow', 'darkness', 'grief', 'suffering'],
+               hint: ['dark', 'death', 'pain', 'hard', 'through']},
+  desert:     {core: ['desert', 'wilderness', 'barren', 'thirst', 'wander', 'wandering'],
+               hint: ['dry', 'empty', 'season', 'long']},
+  narrowpath: {core: ['narrow', 'persevere', 'endure', 'obedience', 'obey', 'climb'],
+               hint: ['journey', 'walk', 'follow', 'forward', 'keep going']},
+  crossroads: {core: ['choose', 'choice', 'decide', 'decision', 'crossroad', 'discern'],
+               hint: ['turn', 'option', 'either', 'instead']},
+
+  // word · scripture · truth
+  scroll:     {core: ['scripture', 'psalm', 'prophet', 'covenant', 'written'],
+               hint: ['verse', 'verses', 'wrote', 'ancient']},
+  tablets:    {core: ['commandment', 'command', 'sinai', 'moses', 'law'],
+               hint: ['rule', 'statute']},
+  openbook:   {core: ['bible', 'gospel', 'study', 'passage', 'teaches'],
+               hint: ['read', 'reading', 'chapter', 'learn', 'matthew', 'philippians', 'word']},
+
+  // light · glory · presence
+  sunrise:    {core: ['morning', 'dawn', 'mercies', 'arise', 'awake', 'daily'],
+               hint: ['mercy', 'today', 'rise', 'fresh', 'new day']},
+  pillar:     {core: ['pillar', 'exodus', 'goes before', 'presence'],
+               hint: ['fire', 'cloud', 'before']},
+  throne:     {core: ['throne', 'reign', 'sovereign', 'almighty', 'majesty'],
+               hint: ['power', 'authority', 'holy']},
+  dove:       {core: ['holy spirit', 'comforter', 'baptism', 'descend'],
+               hint: ['helper', 'breath', 'spirit']},
+
+  // cross · redemption
+  thorns:     {core: ['crucified', 'thorns', 'suffered', 'sacrifice', 'sin'],
+               hint: ['suffer', 'died', 'paid', 'blood']},
+  tomb:       {core: ['resurrection', 'risen', 'rose', 'tomb', 'raised', 'conquered'],
+               hint: ['alive', 'victory', 'defeated']},
+
+  // provision · harvest · blessing
+  harvest:    {core: ['harvest', 'abundance', 'provision', 'reap', 'blessing'],
+               hint: ['fruit', 'bless', 'enough', 'supply', 'plenty']},
+  rain:       {core: ['rain', 'refresh', 'renew', 'revive', 'cleanse'],
+               hint: ['restore', 'pour', 'poured', 'wash']},
+  table:      {core: ['table', 'bread', 'communion', 'nourish', 'feast'],
+               hint: ['cup', 'feed', 'feeds', 'invite', 'welcome', 'prepared', 'share']},
+
+  // rest · eternal · home
+  shepherd:   {core: ['shepherd', 'sheep', 'flock', 'pasture'],
+               hint: ['care', 'cares', 'tend', 'lead']},
+  homelight:  {core: ['home', 'prodigal', 'belong', 'family'],
+               hint: ['return', 'embrace', 'back']},
+  horizon:    {core: ['forever', 'everlasting', 'eternal', 'heaven', 'horizon'],
+               hint: ['beyond', 'coming', 'promise']},
+  gather:     {core: ['together', 'church', 'community', 'one another'],
+               hint: ['friends', 'others', 'someone', 'support', 'reach']},
+
+  // original generics (kept available)
+  dawn:       {core: ['daybreak', 'sunrise'], hint: ['early', 'wake']},
+  silhouette: {core: ['believe', 'standing', 'stand'], hint: ['night', 'alone']},
+  reveal:     {core: ['reveal', 'revealed', 'realise', 'realize', 'hidden'],
+               hint: ['understand', 'notice', 'means', 'truth']},
+  gcall:      {core: ['calling', 'called', 'voice', 'listen'],
+               hint: ['call', 'hear', 'hears', 'speak', 'speaks', 'answer', 'answers']},
+  gjourney:   {core: ['road', 'travel', 'onward'], hint: ['move', 'going', 'walk']},
+  gcross:     {core: ['savior', 'saviour', 'redeem', 'redeemed', 'salvation'],
+               hint: ['jesus', 'christ', 'grace']},
+  gend:       {core: ['amen', 'finally', 'in closing'],
+               hint: ['question', 'remember', 'moment', 'reflect']},
+};
+
+/** Scenes that read well as an opening establishing shot. */
+const OPENERS = ['storm', 'burden', 'deepwater', 'valley', 'desert', 'sunrise', 'stillwater', 'watchtower', 'silhouette', 'dawn'];
+
+/** Scenes that read well as a closing shot. */
+const CLOSERS = ['horizon', 'homelight', 'sunrise', 'shepherd', 'calm', 'stillwater', 'gend', 'gather'];
+
+// ═══ Main ═════════════════════════════════════════════════════════════════════
+
+function main() {
+  const slug = process.argv[2];
+  if (!slug) {
+    console.error('Usage: node prepare.mjs <slug> [duration_in_seconds]');
+    console.error('Example: node prepare.mjs trust-anxiety');
+    console.error('Example: node prepare.mjs trust-anxiety 72.4');
+    process.exit(1);
+  }
+
+  const storyDir   = path.resolve(`stories/${slug}`);
+  const scriptPath = path.join(storyDir, 'script.txt');
+  const configPath = path.join(storyDir, 'story.json');
+  const voicePath  = path.join(storyDir, 'voice.mp3');
+
+  if (!fs.existsSync(scriptPath)) { console.error(`❌ Missing: ${scriptPath}`); process.exit(1); }
+  if (!fs.existsSync(configPath)) { console.error(`❌ Missing: ${configPath}`); process.exit(1); }
+  if (!fs.existsSync(voicePath))  {
+    console.error(`❌ Missing: ${voicePath}`);
+    console.error('   Export your ElevenLabs narration as MP3 and save it there.');
+    process.exit(1);
+  }
+
+  // ─── Load inputs ────────────────────────────────────────────────────────────
+  const story      = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+  const scriptText = fs.readFileSync(scriptPath, 'utf8').trim();
+  const rawLines   = scriptText.split('\n').map(l => l.trim()).filter(Boolean);
+
+  if (!rawLines.length) { console.error('❌ script.txt is empty'); process.exit(1); }
+
+  // ─── Split long lines into screen-sized chunks ──────────────────────────────
+  const chunks = rawLines.flatMap(splitLine);
+  console.log(`✓ Script lines   : ${rawLines.length}  →  ${chunks.length} caption chunks`);
+
+  // ─── Audio duration ─────────────────────────────────────────────────────────
+  let duration = parseFloat(process.argv[3] || '0');
+  if (!duration) duration = detectDuration(voicePath, chunks, slug);
+  if (!duration || Number.isNaN(duration)) {
+    console.error('❌ Could not detect audio duration.');
+    console.error(`   Run: node prepare.mjs ${slug} <duration_in_seconds>`);
+    process.exit(1);
+  }
+  console.log(`✓ Audio duration : ${duration.toFixed(2)}s`);
+
+  // ─── Safety check — Abraham's files untouched ───────────────────────────────
+  ['public/voice.mp3', 'public/pad.mp3', 'src/timeline.ts', 'src/Reel.tsx', 'src/Scenes.tsx'].forEach(f => {
+    if (fs.existsSync(f)) console.log(`✓ Protected (unchanged): ${f}`);
+  });
+
+  // ─── Copy voice to public slot ──────────────────────────────────────────────
+  fs.mkdirSync('public', {recursive: true});
+  fs.copyFileSync(voicePath, 'public/story-voice.mp3');
+  console.log('✓ Copied to public/story-voice.mp3');
+
+  // ─── Build SEGS ─────────────────────────────────────────────────────────────
+  // Weight every chunk by spoken syllables plus the pauses its punctuation
+  // implies, then scale so the weights sum to exactly the audio length. Because
+  // the cursor always advances by a chunk's true share, timing cannot drift.
+  const weights     = chunks.map(chunkWeight);
+  const totalWeight = weights.reduce((a, b) => a + b, 0) || 1;
+  const usable      = Math.max(1, duration - LEAD_IN - TAIL_PAD);
+  const secPerUnit  = usable / totalWeight;
+
+  let cursor = LEAD_IN;
+  const segs = chunks.map((text, i) => {
+    const span = weights[i] * secPerUnit;
+    const s = round2(cursor);
+    cursor += span;
+    const e = round2(Math.min(Math.max(cursor - CAPTION_GAP, s + 0.3), duration - 0.04));
+    const kw = extractKeywords(text);
+    const seg = {s, e, text};
+    return kw.length ? {...seg, kw} : seg;
+  });
+
+  const wordCount = chunks.join(' ').split(/\s+/).filter(Boolean).length;
+  console.log(`✓ Pace           : ${((wordCount / duration) * 60).toFixed(0)} words/min (${(1 / secPerUnit).toFixed(1)} syllables/sec)`);
+
+  // ─── Build BLOCKS — one sentence on screen at a time ────────────────────────
+  const blocks = segs.map((_, i) => [i]);
+
+  // ─── Build SCENES ───────────────────────────────────────────────────────────
+  let scenes;
+  if (Array.isArray(story.scenes) && story.scenes.length) {
+    console.log(`ℹ️  Using ${story.scenes.length} scenes from story.json`);
+    const sceneDur = duration / story.scenes.length;
+    scenes = story.scenes.map((id, i) => ({
+      id,
+      s: round2(i * sceneDur),
+      e: round2(Math.min((i + 1) * sceneDur, duration)),
+    }));
+  } else {
+    scenes = assignScenes(segs, duration);
+  }
+
+  // ─── Write story-timeline.ts ────────────────────────────────────────────────
+  fs.mkdirSync('src', {recursive: true});
+  fs.writeFileSync('src/story-timeline.ts', buildTimeline(segs, blocks, scenes, duration, story, slug), 'utf8');
+  console.log('✓ Written: src/story-timeline.ts');
+
+  console.log('\n✅ Done! Next steps:');
+  console.log('   Preview : npm run studio        (select "StoryReel" in the left panel)');
+  console.log(`   Render  : node render.mjs video ${slug}  →  out/${slug}-reel.mp4`);
+}
+
+// ═══ Helpers ══════════════════════════════════════════════════════════════════
+
+function round2(n) { return parseFloat(n.toFixed(2)); }
+function clamp(n, lo, hi) { return Math.min(hi, Math.max(lo, n)); }
+
+// ─── Caption chunking ─────────────────────────────────────────────────────────
+
+/**
+ * Break a line longer than MAX_WORDS into screen-sized chunks, preferring
+ * punctuation breaks, then conjunctions, and only then a neutral midpoint.
+ */
+function splitLine(text) {
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length <= MAX_WORDS) return [text];
+
+  const mid = words.length / 2;
+  let best = -1;
+  let bestCost = Infinity;
+
+  for (let i = 2; i <= words.length - 2; i++) {
+    const prev = words[i - 1];
+    let cost = Math.abs(i - mid);
+    if (/[,;:]$/.test(prev))              cost -= 7;
+    else if (/[—–]$/.test(prev))          cost -= 6;
+    else if (CONJUNCTIONS.test(words[i])) cost -= 3;
+    else                                  cost += 5; // mid-phrase break: last resort
+    if (cost < bestCost) { bestCost = cost; best = i; }
+  }
+  if (best < 0) best = Math.round(mid);
+
+  return [
+    ...splitLine(words.slice(0, best).join(' ')),
+    ...splitLine(words.slice(best).join(' ')),
+  ];
+}
+
+// ─── Timing model ─────────────────────────────────────────────────────────────
+
+/** Approximate spoken syllables in a single word. */
+function syllables(word) {
+  const raw = word.toLowerCase();
+
+  // Digits are read out, which takes far longer than their character count.
+  const digits = raw.match(/\d+/g);
+  const extra = digits
+    ? digits.reduce((sum, d) => sum + Math.max(1, Math.round(d.length * 1.3)), 0)
+    : 0;
+
+  const w = raw.replace(/[^a-z]/g, '');
+  if (!w) return Math.max(extra, 0.5);
+  if (w.length <= 3) return 1 + extra;
+
+  const trimmed = w
+    .replace(/(?:[^laeiouy]es|[^laeiouy]e)$/, '') // silent trailing e / -es
+    .replace(/^y/, '');
+  const groups = trimmed.match(/[aeiouy]{1,2}/g);
+  return Math.max(1, groups ? groups.length : 1) + extra;
+}
+
+/** Total weight of a chunk: spoken syllables plus the pauses its punctuation implies. */
+function chunkWeight(text) {
+  const words = text.split(/\s+/).filter(Boolean);
+  let w = words.reduce((sum, word) => sum + syllables(word), 0);
+
+  w += (text.match(/\.\.\.|…/g) || []).length * PAUSE_ELLIPSIS;
+  w += (text.match(/[.!?](?!\.)/g) || []).length * PAUSE_SENTENCE;
+  w += (text.match(/[,;:]/g) || []).length * PAUSE_CLAUSE;
+  w += (text.match(/[—–]/g) || []).length * PAUSE_DASH;
+
+  // A chunk with no end punctuation is a mid-sentence split: it flows straight on.
+  if (!/[.!?]$/.test(text.trim())) w += 0.15;
+
+  return Math.max(1, w);
+}
+
+function detectDuration(filepath, chunks, slug) {
+  const probes = [
+    // 1. System ffprobe (fastest, works if ffmpeg installed)
+    () => {
+      const r = execSync(
+        `ffprobe -v error -show_entries format=duration -of csv=p=0 "${filepath}"`,
+        {encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe']},
+      );
+      return parseFloat(r.trim());
+    },
+    // 2. Remotion's bundled compositor binary
+    () => {
+      const comp = findCompositor();
+      if (!comp) throw new Error('no compositor');
+      const r = execSync(
+        `"${comp}" ffprobe -v error -show_entries format=duration -of csv=p=0 "${filepath}"`,
+        {encoding: 'utf8', stdio: ['pipe', 'pipe', 'pipe']},
+      );
+      return parseFloat(r.trim());
+    },
+  ];
+  for (const probe of probes) {
+    try {
+      const d = probe();
+      if (d > 0 && !Number.isNaN(d)) { console.log(`✓ Detected via ffprobe: ${d.toFixed(2)}s`); return d; }
+    } catch { /* try the next probe */ }
+  }
+  // 3. Estimate from syllables (~4.3 syllables/sec is typical narration pace)
+  const syl = chunks.reduce((sum, c) => sum + chunkWeight(c), 0);
+  const est = round2(syl / 4.3);
+  console.warn(`⚠️  ffprobe not found — estimating ${est}s from ${Math.round(syl)} syllables`);
+  console.warn(`   For accurate timing: node prepare.mjs ${slug} <actual_seconds>`);
+  return est;
+}
+
+function findCompositor() {
+  const candidates = [
+    'node_modules/@remotion/compositor-win32-x64-msvc/remotion.exe',
+    'node_modules/@remotion/compositor-linux-x64-gnu/remotion',
+    'node_modules/@remotion/compositor-darwin-arm64/remotion',
+    'node_modules/@remotion/compositor-darwin-x64/remotion',
+  ];
+  return candidates.find(c => fs.existsSync(c)) || null;
+}
+
+/** Words rendered in ember/caps for emphasis. Max 2 per caption so it stays calm. */
+function extractKeywords(text) {
+  const kw = new Set();
+
+  const quoted = text.match(/"([^"]+)"/g) || [];
+  quoted.forEach(q =>
+    q.replace(/"/g, '').toLowerCase().split(/\s+/).slice(0, 2)
+      .forEach(w => { if (w.length > 3) kw.add(w.replace(/[^a-z\-]/g, '')); }));
+
+  for (const k of EMPHASIS) {
+    if (kw.size >= 2) break;
+    if (new RegExp(`\\b${k}`, 'i').test(text)) kw.add(k);
+  }
+  return [...kw].slice(0, 2);
+}
+
+// ─── Scene selection ──────────────────────────────────────────────────────────
+
+/** Weight of a hint-tier match relative to a core-tier match. */
+const HINT_WEIGHT = 0.35;
+/** A window must beat this to count as a real thematic match. */
+const MATCH_FLOOR = 0.30;
+/** No scene may appear more than this many times in one video. */
+const MAX_SCENE_USES = 2;
+
+/** Score one scene against a block of text. */
+function scoreScene(keywords, text) {
+  const core = keywords.core || [];
+  const hint = keywords.hint || [];
+  let score = 0;
+  for (const k of core) if (wordRe(k).test(text)) score += 1;
+  for (const k of hint) if (wordRe(k).test(text)) score += HINT_WEIGHT;
+  // Normalise by the core list only, so a generous hint list never dilutes.
+  return score / Math.sqrt(Math.max(1, core.length));
+}
+
+/**
+ * Group segments into roughly equal time windows (always breaking on a segment
+ * boundary) and pick the scene that best matches each window's own wording.
+ *
+ * Two passes:
+ *   1. Score every scene against the WHOLE script to find its themes. The
+ *      strongest themes get a standing bonus, so a script about anxiety opens
+ *      on a storm rather than on an incidental word match.
+ *   2. Score each window on its own text, plus that theme bonus.
+ *
+ * Because every window is scored on its own words, two different scripts
+ * produce two different scene sequences.
+ */
+function assignScenes(segs, duration) {
+  const count = clamp(Math.round(duration / SCENE_TARGET_S), SCENE_MIN, Math.min(SCENE_MAX, segs.length));
+  const windowSec = duration / count;
+
+  // Split at the segment boundary NEAREST each target time. Accumulating until
+  // a segment overshoots the window instead would merge segments whenever they
+  // are long, yielding far fewer and much longer scenes than SCENE_TARGET_S.
+  const splitAt = new Set();
+  for (let k = 1; k < count; k++) {
+    const target = (k * duration) / count;
+    let best = -1;
+    let bestDist = Infinity;
+    for (let i = 1; i < segs.length; i++) {
+      if (splitAt.has(i)) continue;
+      const dist = Math.abs(segs[i].s - target);
+      if (dist < bestDist) { bestDist = dist; best = i; }
+    }
+    if (best > 0) splitAt.add(best);
+  }
+
+  const groups = [];
+  let current = [];
+  segs.forEach((seg, i) => {
+    if (splitAt.has(i) && current.length) { groups.push(current); current = []; }
+    current.push(seg);
+  });
+  if (current.length) groups.push(current);
+
+  // ── Pass 1: what is this script actually about? ──
+  const fullText = segs.map(s => s.text).join(' ');
+  const themeRank = Object.entries(SCENE_KEYWORDS)
+    .map(([id, kws]) => ({id, score: scoreScene(kws, fullText)}))
+    .filter(r => r.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  const themeBonus = new Map();
+  themeRank.slice(0, 3).forEach((r, i) => themeBonus.set(r.id, 0.40 - i * 0.10)); // .40 / .30 / .20
+
+  if (themeRank.length) {
+    console.log(`✓ Script themes  : ${themeRank.slice(0, 3).map(r => r.id).join(', ')}`);
+  }
+
+  // ── Pass 2: pick a scene per window ──
+  const useCount = new Map();
+  const chosen = [];
+
+  groups.forEach((group, gi) => {
+    const text = group.map(s => s.text).join(' ');
+    const isFirst = gi === 0;
+    const isLast = gi === groups.length - 1;
+    const prev = chosen[chosen.length - 1];
+
+    let bestId = null;
+    let bestScore = -Infinity;
+
+    for (const [id, keywords] of Object.entries(SCENE_KEYWORDS)) {
+      let score = scoreScene(keywords, text);
+      const matched = score >= MATCH_FLOOR;
+
+      score += themeBonus.get(id) ?? 0;
+
+      if (isFirst && OPENERS.includes(id)) score += 0.30;
+      if (isLast && CLOSERS.includes(id)) score += 0.60;
+      if (!isLast && CLOSERS.includes(id)) score -= 0.35; // save the closers for the end
+      if (id === prev) score -= 10;                        // never repeat back-to-back
+      // A theme may come back once; an unrelated scene should not repeat at all.
+      const seen = useCount.get(id) ?? 0;
+      if (seen >= MAX_SCENE_USES) continue;                // hard cap on repeats
+      if (seen > 0) score -= themeBonus.has(id) ? 0.70 : 0.85;
+      if (!matched) score -= 0.25;                         // weak match, but not disqualifying
+
+      if (score > bestScore) { bestScore = score; bestId = id; }
+    }
+
+    // Nothing matched — fall back to an unused scene so the video still varies.
+    if (!bestId) {
+      bestId = Object.keys(SCENE_KEYWORDS).find(id => !useCount.has(id) && id !== prev) || 'sunrise';
+    }
+
+    useCount.set(bestId, (useCount.get(bestId) ?? 0) + 1);
+    chosen.push(bestId);
+  });
+
+  const scenes = groups.map((group, i) => ({
+    id: chosen[i],
+    s: round2(i === 0 ? 0 : Math.max(0, group[0].s - 0.25)),
+    e: round2(i === groups.length - 1 ? duration : group[group.length - 1].e + 0.25),
+  }));
+
+  console.log(`✓ Auto-assigned ${scenes.length} scenes (~${windowSec.toFixed(1)}s each):`);
+  console.log(`  ${chosen.join(' → ')}`);
+  console.log("  (Matched against each section's own wording — add a \"scenes\" array to story.json to override.)");
+  return scenes;
+}
+
+/** Word-boundary matcher, with regex metacharacters in the keyword escaped. */
+function wordRe(keyword) {
+  return new RegExp(`\\b${keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`, 'i');
+}
+
+// ─── Output ───────────────────────────────────────────────────────────────────
+
+function buildTimeline(segs, blocks, scenes, duration, story, slug) {
+  const segLines = segs.map(s => {
+    const kw = s.kw ? `, kw: ${JSON.stringify(s.kw)}` : '';
+    return `  {s: ${s.s}, e: ${s.e}, text: ${JSON.stringify(s.text)}${kw}}`;
+  }).join(',\n');
+
+  const blockLines = blocks.map(b => `  [${b.join(', ')}]`).join(',\n');
+  const sceneLines = scenes.map(sc => `  {id: '${sc.id}', s: ${sc.s}, e: ${sc.e}}`).join(',\n');
+  const totalFrames = Math.ceil(duration * FPS);
+
+  return `// AUTO-GENERATED by prepare.mjs — do not edit manually
+// Story : ${story.title} (${story.scripture || 'No scripture'})
+// Regen : node prepare.mjs ${slug}
+import type {Seg} from './timeline';
+
+export const STORY_SEGS: Seg[] = [
+${segLines},
+];
+
+export const STORY_BLOCKS: number[][] = [
+${blockLines},
+];
+
+export const STORY_SCENES: {id: string; s: number; e: number}[] = [
+${sceneLines},
+];
+
+export const STORY_DURATION     = ${duration};
+export const STORY_FPS          = ${FPS};
+export const STORY_TOTAL_FRAMES = ${totalFrames};
+export const STORY_TITLE        = ${JSON.stringify(story.title)};
+export const STORY_SCRIPTURE    = ${JSON.stringify(story.scripture || '')};
+`;
+}
+
+main();

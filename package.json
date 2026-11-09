@@ -6,7 +6,10 @@
   "scripts": {
     "studio": "remotion studio src/index.tsx",
     "render": "node render.mjs video",
-    "stills": "node render.mjs stills"
+    "stills": "node render.mjs stills",
+    "ui": "node server.mjs",
+    "caption-sync-setup": "npm install @huggingface/transformers",
+    "sync": "node transcribe.mjs"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.1.0",
@@ -14,6 +17,7 @@
     "@remotion/bundler": "^4.0.250",
     "@remotion/cli": "^4.0.250",
     "@remotion/renderer": "^4.0.250",
+    "mpg123-decoder": "^1.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remotion": "^4.0.250"

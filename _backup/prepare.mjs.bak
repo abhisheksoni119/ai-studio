@@ -1,0 +1,263 @@
+#!/usr/bin/env node
+// prepare.mjs — Faith Reel Studio automation
+// Usage: node prepare.mjs <slug> [duration_in_seconds]
+//
+// Steps this script handles automatically:
+//  1. Reads stories/<slug>/script.txt  (your narration lines)
+//  2. Reads stories/<slug>/story.json  (title, scripture; scenes optional)
+//  3. Reads stories/<slug>/voice.mp3   (ElevenLabs export)
+//  4. Detects audio duration via ffprobe (or estimates from word count)
+//  5. Distributes timing proportionally across script lines → SEGS
+//  6. Groups lines into caption blocks → BLOCKS
+//  7. Assigns scenes (from story.json if provided, else auto from keywords) → SCENES
+//  8. Copies voice.mp3 → public/story-voice.mp3  (NEVER touches voice.mp3)
+//  9. Writes src/story-timeline.ts (auto-generated, safe to regenerate)
+
+import fs from 'fs';
+import path from 'path';
+import {execSync} from 'child_process';
+
+// ─── Validate args ────────────────────────────────────────────────────────────
+const slug = process.argv[2];
+if (!slug) {
+  console.error('Usage: node prepare.mjs <slug> [duration_in_seconds]');
+  console.error('Example: node prepare.mjs trust-anxiety');
+  console.error('Example: node prepare.mjs trust-anxiety 72.4');
+  process.exit(1);
+}
+
+const storyDir    = path.resolve(`stories/${slug}`);
+const scriptPath  = path.join(storyDir, 'script.txt');
+const configPath  = path.join(storyDir, 'story.json');
+const voicePath   = path.join(storyDir, 'voice.mp3');
+
+if (!fs.existsSync(scriptPath)) { console.error(`❌ Missing: ${scriptPath}`); process.exit(1); }
+if (!fs.existsSync(configPath)) { console.error(`❌ Missing: ${configPath}`); process.exit(1); }
+if (!fs.existsSync(voicePath))  {
+  console.error(`❌ Missing: ${voicePath}`);
+  console.error(`   Export your ElevenLabs narration as MP3 and save it there.`);
+  process.exit(1);
+}
+
+// ─── Load inputs ──────────────────────────────────────────────────────────────
+const story      = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+const scriptText = fs.readFileSync(scriptPath, 'utf8').trim();
+const lines      = scriptText.split('\n').map(l => l.trim()).filter(Boolean);
+
+if (!lines.length) { console.error('❌ script.txt is empty'); process.exit(1); }
+
+// ─── Audio duration ───────────────────────────────────────────────────────────
+let duration = parseFloat(process.argv[3] || '0');
+if (!duration) duration = detectDuration(voicePath);
+if (!duration || isNaN(duration)) {
+  console.error('❌ Could not detect audio duration.');
+  console.error(`   Run: node prepare.mjs ${slug} <duration_in_seconds>`);
+  process.exit(1);
+}
+console.log(`✓ Audio duration : ${duration.toFixed(2)}s`);
+console.log(`✓ Script lines   : ${lines.length}`);
+
+// ─── Safety check — Abraham's files untouched ─────────────────────────────────
+['public/voice.mp3', 'public/pad.mp3', 'src/timeline.ts'].forEach(f => {
+  if (fs.existsSync(f)) console.log(`✓ Protected (unchanged): ${f}`);
+});
+
+// ─── Copy voice to public slot ────────────────────────────────────────────────
+fs.copyFileSync(voicePath, 'public/story-voice.mp3');
+console.log(`✓ Copied to public/story-voice.mp3`);
+
+// ─── Build SEGS (proportional timing by character count) ─────────────────────
+const totalChars    = lines.reduce((s, l) => s + l.length, 0);
+const usable        = duration - 0.5; // 0.5s lead-in
+let   cursor        = 0.5;
+
+const segs = lines.map(text => {
+  const ratio  = text.length / totalChars;
+  const segDur = Math.max(0.8, ratio * usable);
+  const s      = round2(cursor);
+  const e      = round2(Math.min(cursor + segDur - 0.1, duration - 0.05));
+  cursor      += segDur;
+  const kw     = extractKeywords(text);
+  return kw.length ? {s, e, text, kw} : {s, e, text};
+});
+
+// ─── Build BLOCKS (2 lines per caption block) ─────────────────────────────────
+const blocks = [];
+for (let i = 0; i < segs.length; i += 2) {
+  blocks.push(i + 1 < segs.length ? [i, i + 1] : [i]);
+}
+
+// ─── Build SCENES ─────────────────────────────────────────────────────────────
+let sceneList = story.scenes;
+if (!sceneList?.length) {
+  console.log('ℹ️  No scenes defined — auto-assigning from script keywords...');
+  sceneList = assignScenesAuto(lines, duration);
+  console.log('   Tip: add a "scenes" array to story.json for manual control.');
+}
+const sceneDur = duration / sceneList.length;
+const scenes   = sceneList.map((id, i) => ({
+  id,
+  s: round2(i * sceneDur),
+  e: round2(Math.min((i + 1) * sceneDur, duration)),
+}));
+
+// ─── Write story-timeline.ts ──────────────────────────────────────────────────
+const out = buildTimeline(segs, blocks, scenes, duration, story, slug);
+fs.writeFileSync('src/story-timeline.ts', out, 'utf8');
+console.log(`✓ Written: src/story-timeline.ts`);
+
+console.log('\n✅ Done! Next steps:');
+console.log(`   Preview : npm run studio        (select "StoryReel" in the left panel)`);
+console.log(`   Render  : node render.mjs video ${slug}  →  out/${slug}-reel.mp4`);
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+function round2(n) { return parseFloat(n.toFixed(2)); }
+
+function detectDuration(filepath) {
+  const probes = [
+    // 1. System ffprobe (fastest, works if ffmpeg installed)
+    () => {
+      const r = execSync(
+        `ffprobe -v error -show_entries format=duration -of csv=p=0 "${filepath}"`,
+        {encoding: 'utf8', stdio: ['pipe','pipe','pipe']}
+      );
+      return parseFloat(r.trim());
+    },
+    // 2. Remotion's bundled compositor binary
+    () => {
+      const comp = findCompositor();
+      if (!comp) throw new Error('no compositor');
+      const r = execSync(
+        `"${comp}" ffprobe -v error -show_entries format=duration -of csv=p=0 "${filepath}"`,
+        {encoding: 'utf8', stdio: ['pipe','pipe','pipe']}
+      );
+      return parseFloat(r.trim());
+    },
+  ];
+  for (const probe of probes) {
+    try {
+      const d = probe();
+      if (d > 0 && !isNaN(d)) { console.log(`✓ Detected via ffprobe: ${d.toFixed(2)}s`); return d; }
+    } catch {}
+  }
+  // 3. Estimate from word count (~138 wpm based on Abraham reel)
+  const words = scriptText.split(/\s+/).filter(Boolean).length;
+  const est   = round2(words / 2.3);
+  console.warn(`⚠️  ffprobe not found — estimating ${est}s from ${words} words (~138 wpm)`);
+  console.warn(`   For accurate timing: node prepare.mjs ${slug} <actual_seconds>`);
+  return est;
+}
+
+function findCompositor() {
+  const candidates = [
+    'node_modules/@remotion/compositor-win32-x64-msvc/remotion.exe',
+    'node_modules/@remotion/compositor-linux-x64-gnu/remotion',
+    'node_modules/@remotion/compositor-darwin-arm64/remotion',
+    'node_modules/@remotion/compositor-darwin-x64/remotion',
+  ];
+  return candidates.find(c => fs.existsSync(c)) || null;
+}
+
+function extractKeywords(text) {
+  const kw = new Set();
+  // Words inside quotation marks
+  const quoted = text.match(/"([^"]+)"/g) || [];
+  quoted.forEach(q =>
+    q.replace(/"/g, '').toLowerCase().split(/\s+/).slice(0, 2)
+     .forEach(w => { if (w.length > 3) kw.add(w.replace(/[^a-z\-]/g, '')); })
+  );
+  // Theologically significant words
+  const keys = ['father','son','lamb','provide','promise','cross','blood','grace','faith',
+                 'miss','coming','only','not','stops','stopped','test','wood','knife','ram',
+                 'risen','death','life','light','darkness','spirit','lord','god','king'];
+  const low = text.toLowerCase();
+  keys.forEach(k => { if (low.includes(k)) kw.add(k); });
+  return [...kw].slice(0, 2);
+}
+
+function assignScenesAuto(lines, duration) {
+  const fullText = lines.join(' ').toLowerCase();
+
+  // Available generic scenes with keywords that suggest each one
+  const KEYWORD_MAP = {
+    dawn:       ['morning','dawn','arise','day','begin','new','sun','open','awake','creation','sky','wake'],
+    silhouette: ['trust','faith','believe','confidence','still','alone','quiet','wait','stand','darkness','shadow'],
+    reveal:     ['reveal','show','presence','glory','know','truth','find','see','hidden','manifest','appear'],
+    gcall:      ['call','voice','speak','hear','listen','answer','prayer','pray','ask','cry','word','speak'],
+    gjourney:   ['journey','walk','path','way','go','step','follow','lead','through','valley','road','carry','run'],
+    gcross:     ['cross','jesus','christ','savior','saved','redeem','sin','sacrifice','love','died','risen','salvation'],
+    gend:       ['peace','rest','eternal','forever','everlasting','joy','comfort','promise','secure','assured'],
+  };
+
+  // Score each scene by how many of its keywords appear in the script
+  const scores = {};
+  for (const [scene, keywords] of Object.entries(KEYWORD_MAP)) {
+    scores[scene] = keywords.filter(k => fullText.includes(k)).length;
+  }
+
+  // Target 1 scene per ~10 seconds, clamped between 4 and 8
+  const target = Math.min(8, Math.max(4, Math.round(duration / 10)));
+
+  // Rank candidates (exclude gend — always goes last)
+  const candidates = Object.keys(KEYWORD_MAP)
+    .filter(s => s !== 'gend')
+    .sort((a, b) => scores[b] - scores[a]);
+
+  const selected = candidates.slice(0, target - 1);
+
+  // Pad with remaining scenes if under target
+  if (selected.length < target - 1) {
+    for (const s of Object.keys(KEYWORD_MAP)) {
+      if (s !== 'gend' && !selected.includes(s)) {
+        selected.push(s);
+        if (selected.length >= target - 1) break;
+      }
+    }
+  }
+
+  selected.push('gend'); // always end with closing scene
+
+  console.log(`✓ Auto-assigned ${selected.length} scenes: ${selected.join(', ')}`);
+  console.log('  (These are approximate matches — add a "scenes" array to story.json for exact control)');
+  return selected;
+}
+
+function buildTimeline(segs, blocks, scenes, duration, story, slug) {
+  const segLines = segs.map(s => {
+    const kw = s.kw ? `, kw: ${JSON.stringify(s.kw)}` : '';
+    return `  {s: ${s.s}, e: ${s.e}, text: ${JSON.stringify(s.text)}${kw}}`;
+  }).join(',\n');
+
+  const blockLines = blocks.map(b => `  [${b.join(', ')}]`).join(',\n');
+
+  const sceneLines = scenes.map(sc =>
+    `  {id: '${sc.id}', s: ${sc.s}, e: ${sc.e}}`
+  ).join(',\n');
+
+  const totalFrames = Math.ceil(duration * 30);
+
+  return `// AUTO-GENERATED by prepare.mjs — do not edit manually
+// Story : ${story.title} (${story.scripture || 'No scripture'})
+// Regen : node prepare.mjs ${slug}
+import type {Seg} from './timeline';
+
+export const STORY_SEGS: Seg[] = [
+${segLines},
+];
+
+export const STORY_BLOCKS: number[][] = [
+${blockLines},
+];
+
+export const STORY_SCENES: {id: string; s: number; e: number}[] = [
+${sceneLines},
+];
+
+export const STORY_DURATION     = ${duration};
+export const STORY_FPS          = 30;
+export const STORY_TOTAL_FRAMES = ${totalFrames};
+export const STORY_TITLE        = ${JSON.stringify(story.title)};
+export const STORY_SCRIPTURE    = ${JSON.stringify(story.scripture || '')};
+`;
+}

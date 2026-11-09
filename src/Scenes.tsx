@@ -283,8 +283,109 @@ export const End: React.FC<P> = ({t}) => (
   </>
 );
 
+// ─── Generic scenes for new stories ──────────────────────────────────────────
+// Use these in story.json "scenes" array for any new Bible story.
+
+/** Generic sunrise / dawn — works as an opening or transition */
+export const GenericDawn: React.FC<P> = ({t}) => (
+  <>
+    <Sky id="gd" top="#1a1030" bottom="#d4824e" />
+    <circle cx={540} cy={ramp(t, 0, 60, 1100, 720)} r={80} fill="#ffe2a8" />
+    <Glow id="gds" cx={540} cy={ramp(t, 0, 60, 1100, 720)} r={500} color="#ffd18a" opacity={0.7} />
+    <Stars n={50} t={t} seed="gd" opacity={ramp(t, 0, 30, 0.6, 0)} />
+    <Ridge pts={[[0, 1250], [300, 1200], [600, 1220], [1080, 1200]]} fill="#3a2228" />
+    {ground('#2a171c', 1230)}
+  </>
+);
+
+/** Generic silhouette — two figures on a ridge under moon/stars */
+export const GenericSilhouette: React.FC<P> = ({t}) => (
+  <>
+    <Sky id="gs" top="#0b0d1f" bottom="#43283a" />
+    <Stars n={100} t={t} seed="gs" />
+    <Glow id="gsm" cx={540} cy={400} r={280} color="#ffe9c4" opacity={0.5} />
+    <circle cx={540} cy={400} r={60} fill="#fff1d6" />
+    <Ridge pts={[[0, 1200], [400, 1150], [700, 1180], [1080, 1150]]} fill="#2b1d2c" />
+    {ground(C.ink, 1190)}
+    <Father x={440} y={1200} s={1.2} fill={C.ink} arm={20} />
+    <Son x={560} y={1200} s={1.1} fill={C.ink} />
+  </>
+);
+
+/** Generic reveal moment — ember line on black (mirrors Miss scene) */
+export const GenericReveal: React.FC<P> = ({t}) => (
+  <>
+    <rect width="1080" height="1920" fill="#080507" />
+    <Glow id="gr" cx={540} cy={960} r={600} color={C.gold} opacity={ramp(t, 0, 40, 0, 0.35)} />
+    <rect x={540 - ramp(t, 0, 40, 0, 300)} y="958" width={ramp(t, 0, 40, 0, 600)} height="4" fill={C.ember} />
+  </>
+);
+
+/** Generic light-beam call — reusable divine-call scene without scripture label */
+export const GenericCall: React.FC<P> = ({t}) => (
+  <>
+    <Sky id="gc" top="#1b1530" bottom="#7a4a3a" />
+    <Stars n={50} t={t} seed="gc" opacity={0.4} />
+    <defs>
+      <linearGradient id="gcbeam" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stopColor="#fff3d0" stopOpacity="0.85" />
+        <stop offset="1" stopColor="#fff3d0" stopOpacity="0" />
+      </linearGradient>
+    </defs>
+    <path d={`M${500 - ramp(t, 0, 40, 10, 60)},0 L${540 + ramp(t, 0, 40, 10, 60)},0 L${720},1260 L${330},1260 Z`} fill="url(#gcbeam)" opacity={ramp(t, 0, 30)} />
+    <Ridge pts={[[0, 1240], [300, 1200], [700, 1230], [1080, 1190]]} fill="#3a2430" />
+    {ground('#1a1015', 1255)}
+    <Glow id="gcg" cx={530} cy={1150} r={260} color="#fff0c8" opacity={0.6} />
+    <Father x={530} y={1262} s={1.5} fill={C.ink} arm={10} />
+  </>
+);
+
+/** Generic journey — walking figures, no day counter */
+export const GenericJourney: React.FC<P> = ({t, dur}) => {
+  const fx = 260 + t * 1.6;
+  return (
+    <>
+      <Sky id="gj" top="#5b3a5c" bottom="#f2b27a" />
+      <circle cx={830} cy={ramp(t, 0, dur, 900, 640)} r={70} fill="#ffe2a8" />
+      <Glow id="gjs" cx={830} cy={ramp(t, 0, dur, 900, 640)} r={300} color="#ffd18a" opacity={0.6} />
+      <Ridge pts={[[0, 1240], [500, 1220], [1080, 1250]]} fill="#3b2228" />
+      {ground('#2a171c', 1250)}
+      <Father x={fx} y={1254 + bob(t)} s={1.1} fill={C.ink} arm={20} />
+      <Son x={fx + 110} y={1254 + bob(t + 3)} s={1.05} fill={C.ink} />
+    </>
+  );
+};
+
+/** Generic cross — reusable crucifixion scene */
+export const GenericCross: React.FC<P> = ({t}) => (
+  <>
+    <Sky id="gcr" top="#0a0a10" bottom="#4a2a2a" />
+    <Glow id="gcrg" cx={540} cy={820} r={ramp(t, 0, 60, 300, 520)} color="#f7d9a0" opacity={0.6} />
+    <Ridge pts={[[0, 1350], [300, 1200], [540, 1150], [780, 1200], [1080, 1350]]} fill={C.ink} />
+    <g transform={`translate(540,1160) scale(${ramp(t, 0, 70, 1, 1.12)}) translate(-540,-1160)`}>
+      <Cross x={540} y={1160} s={1.6} fill={C.ink} />
+    </g>
+  </>
+);
+
+/** Generic end — fade to warm light, no scripture label (add via story.json) */
+export const GenericEnd: React.FC<P> = ({t}) => (
+  <>
+    <rect width="1080" height="1920" fill={mix('#2a1a14', '#f6efe1', ramp(t, 0, 25))} />
+    <Glow id="gend" cx={540} cy={860} r={600} color="#ffd890" opacity={ramp(t, 10, 40, 0, 0.55)} />
+    <Stars n={30} t={t} seed="ge" opacity={ramp(t, 0, 20, 0.4, 0)} />
+  </>
+);
+
+// ─── Scene registry ────────────────────────────────────────────────────────────
+// Abraham scenes (IDs used in src/timeline.ts)
+// Generic scenes (IDs used in stories/<slug>/story.json)
 export const SCENE_MAP: Record<string, React.FC<P>> = {
+  // Abraham originals
   hook: Hook, book: BookScene, stars: StarsScene, call: Call, journey: Journey, lamb: LambQ, altar: AltarScene,
   ram: RamScene, idols: Idols, generations: Generations, jireh: Jireh, miss: Miss, centuries: Centuries,
   cross: CrossScene, end: End,
+  // Generic reusables for new stories
+  dawn: GenericDawn, silhouette: GenericSilhouette, reveal: GenericReveal,
+  gcall: GenericCall, gjourney: GenericJourney, gcross: GenericCross, gend: GenericEnd,
 };

@@ -1,0 +1,167 @@
+import React from 'react';
+import {AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame} from 'remotion';
+import '@fontsource/cormorant-garamond/500-italic.css';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/cormorant-garamond/700.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import {STORY_SEGS, STORY_BLOCKS, STORY_SCENES, STORY_FPS, STORY_TOTAL_FRAMES, STORY_DURATION} from './story-timeline';
+import {SCENE_MAP} from './Scenes';
+import {STORY_SCENE_MAP} from './StoryScenes';
+import {C} from './Art';
+
+const XF = 12; // crossfade frames
+const cl = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
+
+// Abraham's scenes stay available; story scenes are layered on top.
+// Neither map is mutated — Scenes.tsx is untouched.
+const ALL_SCENES: Record<string, React.FC<any>> = {...SCENE_MAP, ...STORY_SCENE_MAP};
+
+const SceneWrap: React.FC<{id: string; s: number; e: number; last: boolean}> = ({id, s, e, last}) => {
+  const Comp = ALL_SCENES[id];
+  if (!Comp) {
+    if (typeof console !== 'undefined') console.warn(`[StoryReel] Unknown scene id "${id}" — skipped.`);
+    return null;
+  }
+  const start = Math.max(0, Math.round(s * STORY_FPS) - (s > 0 ? XF : 0));
+  const end = last ? STORY_TOTAL_FRAMES : Math.round(e * STORY_FPS);
+  const dur = Math.max(2, end - start); // never zero/negative — interpolate would throw
+  return (
+    <Sequence from={start} durationInFrames={dur} name={id}>
+      <Inner Comp={Comp} at={start / STORY_FPS} dur={dur} fadeIn={s > 0} />
+    </Sequence>
+  );
+};
+
+const Inner: React.FC<{Comp: React.FC<any>; at: number; dur: number; fadeIn: boolean}> = ({Comp, at, dur, fadeIn}) => {
+  const t = useCurrentFrame();
+  const op = fadeIn ? interpolate(t, [0, XF], [0, 1], cl) : 1;
+  const zoom = interpolate(t, [0, Math.max(1, dur)], [1.0, 1.06], cl);
+  return (
+    <AbsoluteFill style={{opacity: op}}>
+      <svg viewBox="0 0 1080 1920" width="1080" height="1920" style={{transform: `scale(${zoom})`}}>
+        <Comp t={t} at={at} dur={dur} />
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
+const clean = (w: string) => w.toLowerCase().replace(/[^a-z\-]/g, '');
+
+// Scenes whose lower third is a LIGHT background. Captions flip to dark ink
+// over these. Keyed to the scene actually on screen rather than to elapsed
+// time, because the closing scene is auto-selected and varies per story.
+const LIGHT_BG = new Set(['gend', 'end', 'jireh', 'harvest']);
+
+// Captions: ONE sentence on screen at a time (prepare.mjs emits one segment per block).
+// Words are revealed slightly AHEAD of the spoken word so the text never trails the voice.
+const LEAD = 0.12;       // seconds of head start on the narration
+const FADE_IN = 0.11;    // per-word fade duration — short, so words snap in
+const SPREAD = 0.82;     // reveal all words within this fraction of the segment
+
+const StoryCaptions: React.FC = () => {
+  const f = useCurrentFrame();
+  const sec = f / STORY_FPS;
+
+  const activeScene = STORY_SCENES.find((sc) => sec >= sc.s && sec < sc.e)
+    ?? STORY_SCENES[STORY_SCENES.length - 1];
+  const onLight = activeScene ? LIGHT_BG.has(activeScene.id) : false;
+
+  // END is a finite stand-in for "there is no next block". A non-finite value
+  // here would reach interpolate() below and throw mid-render; a small fixed
+  // sentinel (e.g. 99) would silently hide the last caption of any video
+  // longer than the sentinel.
+  const END = STORY_DURATION + 1;
+
+  const startOf = (blockIndex: number) =>
+    STORY_BLOCKS[blockIndex] ? STORY_SEGS[STORY_BLOCKS[blockIndex][0]]?.s ?? END : END;
+
+  const bi = STORY_BLOCKS.findIndex((b, i) => {
+    const s = STORY_SEGS[b[0]]?.s ?? 0;
+    return sec >= s - LEAD && sec < startOf(i + 1) - LEAD;
+  });
+  if (bi < 0) return null;
+
+  const block = STORY_BLOCKS[bi];
+  const blockEnd = STORY_SEGS[block[block.length - 1]]?.e ?? 0;
+  const hasNext = bi + 1 < STORY_BLOCKS.length;
+  const nextStart = startOf(bi + 1);
+
+  // Hold the finished line briefly, then clear before the next one arrives.
+  // The final caption holds until the end of the video instead.
+  const fadeStart = hasNext
+    ? Math.min(blockEnd + 0.35, nextStart - 0.22)
+    : Math.max(blockEnd, STORY_DURATION - 0.6);
+  const fadeEnd = Math.max(fadeStart + 0.05, hasNext ? nextStart - 0.04 : STORY_DURATION);
+  const out = interpolate(sec, [fadeStart, fadeEnd], [1, 0], cl);
+
+  const words: {w: string; at: number; kw: boolean}[] = [];
+  block.forEach((si) => {
+    const seg = STORY_SEGS[si];
+    if (!seg) return;
+    const ws = seg.text.split(' ').filter(Boolean);
+    const span = Math.max(0.4, seg.e - seg.s);
+    ws.forEach((w, i) => {
+      words.push({
+        w,
+        at: seg.s - LEAD + (i / Math.max(1, ws.length)) * span * SPREAD,
+        kw: (seg.kw ?? []).includes(clean(w)),
+      });
+    });
+  });
+
+  // One sentence per screen, so sizing stays in a tight, readable band.
+  const n = words.length;
+  const fontSize = n > 16 ? 62 : n > 11 ? 70 : 78;
+
+  return (
+    <AbsoluteFill style={{justifyContent: 'flex-start', alignItems: 'center', paddingTop: 1410, opacity: out}}>
+      <div style={{
+        width: 900, textAlign: 'center', lineHeight: 1.2,
+        fontFamily: 'Cormorant Garamond', fontStyle: 'italic', fontWeight: 500,
+        fontSize,
+        color: onLight ? '#2a1c14' : C.sand,
+        textShadow: onLight ? 'none' : '0 4px 24px rgba(0,0,0,0.85)',
+      }}>
+        {words.map((w, i) => {
+          const p = interpolate(sec, [w.at, w.at + FADE_IN], [0, 1], cl);
+          return (
+            <span key={i} style={{
+              display: 'inline-block', marginRight: 17, opacity: p,
+              transform: `translateY(${(1 - p) * 12}px)`,
+              ...(w.kw ? {
+                fontStyle: 'normal', fontWeight: 700,
+                color: onLight ? '#b5561c' : C.ember,
+                letterSpacing: 2, textTransform: 'uppercase',
+              } : {}),
+            }}>
+              {w.w}
+            </span>
+          );
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** Darkens the lower frame so light captions stay readable — skipped on light scenes. */
+const CaptionScrim: React.FC = () => {
+  const sec = useCurrentFrame() / STORY_FPS;
+  const active = STORY_SCENES.find((sc) => sec >= sc.s && sec < sc.e);
+  if (active && LIGHT_BG.has(active.id)) return null;
+  return <AbsoluteFill style={{background: 'linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%)'}} />;
+};
+
+export const StoryReel: React.FC = () => (
+  <AbsoluteFill style={{backgroundColor: '#000'}}>
+    {STORY_SCENES.map((sc, i) => (
+      <SceneWrap key={`${sc.id}-${i}`} {...sc} last={i === STORY_SCENES.length - 1} />
+    ))}
+    {/* bottom shade for caption legibility over dark scenes */}
+    <CaptionScrim />
+    <StoryCaptions />
+    {/* story-voice.mp3: new story audio — NEVER voice.mp3 (that's Abraham's) */}
+    <Audio src={staticFile('story-voice.mp3')} />
+    <Audio src={staticFile('pad.mp3')} volume={0.2} />
+  </AbsoluteFill>
+);
